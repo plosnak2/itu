@@ -1,6 +1,6 @@
 import React from 'react'
 import {View} from 'react-native';
-import Login from './Screens/login.js'
+import Homepage from './Screens/homepage.js'
 import { NavigationContainer } from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
@@ -13,8 +13,8 @@ class Routes extends React.Component {
             <NavigationContainer>
                 <Stack.Navigator initialRouteName={'Register'}>
                     <Stack.Screen
-                        name="Login"
-                        component={Login}
+                        name="Homepage"
+                        component={Homepage}
                         options={{header: () => null}}
                     />
                 </Stack.Navigator>
