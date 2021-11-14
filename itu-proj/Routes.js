@@ -1,5 +1,4 @@
 import React from 'react'
-import {View} from 'react-native';
 import Homepage from './Screens/homepage.js'
 import Recipe_screen from './Screens/Recipe_screen.js';
 import { NavigationContainer } from '@react-navigation/native';
