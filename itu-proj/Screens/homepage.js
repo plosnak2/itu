@@ -6,16 +6,13 @@ import { RecipeRef } from '../firebaseConfig'
 class Homepage extends Component {
     state = {
         Recipe: [],
-        id: '',
     }
-
+    
     componentDidMount() {
-        let recipes = [];
         RecipeRef.onSnapshot((QuerySnapshot) => {
+            let recipes = [];
             QuerySnapshot.forEach((doc) => {
                 recipes.push({ id: doc.id, data: doc.data() });
-                this.setState({ id: doc.id })
-                console.log(recipes);
             });
             this.setState({ Recipe: recipes });
         });

@@ -17,7 +17,6 @@ class Recipe_screen extends Component {
       RecipeRef.doc(this.state.id).get().then((documentSnapshot) => {
          if (documentSnapshot.exists) {
             this.setState({ recipe: documentSnapshot.data() });
-            //console.log('User data: ', this.state.recipe);
          }
       });
    }
