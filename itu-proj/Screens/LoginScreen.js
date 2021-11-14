@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/core'
 import React, { useEffect, useState } from 'react'
-import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View, Image, ScrollView } from 'react-native'
+import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View, Image, ScrollView, ImageBackground } from 'react-native'
 import { auth } from '../firebase'
 import { Dimensions } from 'react-native';
 import Register from '../Components/Register'
@@ -8,11 +8,13 @@ import Register from '../Components/Register'
 const LoginScreen = ({email, password, login, register, setEmail, setPassword}) => {
   const navigation = useNavigation()
   return (
+    <ImageBackground source={require('../assets/cook.png')} resizeMode="cover" style={styles.imagebg}>
     <ScrollView
       contentContainerStyle={styles.container}
     >
+    
       
-      <Image source={require('../assets/logo.png')} style={styles.image}/>
+      <Image source={require('../assets/logo.png')} style={styles.image} />
       
       <Text style={styles.textLogin}>Prihláste sa do aplikácie</Text>
       <View style={styles.inputContainer}>
@@ -47,7 +49,9 @@ const LoginScreen = ({email, password, login, register, setEmail, setPassword}) 
           <Text style={styles.textReg}>Nemáte ešte účet? Zaregistrujte sa tu!</Text>
         </TouchableOpacity>
       </View>
+      
     </ScrollView>
+    </ImageBackground>
   )
   
 }
@@ -57,12 +61,15 @@ export default LoginScreen
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
+    top:Dimensions.get('window').height / 10
   },
   image: {
     width: Dimensions.get('window').width / 2,
     height:Dimensions.get('window').width / 2
+  },
+  imagebg:{
+    flex: 1
   },
   inputContainer: {
     width: '80%'

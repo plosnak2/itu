@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/core'
 import React, { useEffect, useState } from 'react'
-import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View, Image, ScrollView } from 'react-native'
+import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View, Image, ScrollView, ImageBackground } from 'react-native'
 import { auth } from '../firebase'
 import { Dimensions } from 'react-native';
 import Register from '../Components/Register'
@@ -8,6 +8,7 @@ import Register from '../Components/Register'
 const RegisterScreen = ({email, password, register, setEmail, setPassword, repeatpass, setRepeatpass}) => {
   const navigation = useNavigation()
   return (
+    <ImageBackground source={require('../assets/cook.png')} resizeMode="cover" style={styles.imagebg}>
     <ScrollView
       contentContainerStyle={styles.container}
     >
@@ -55,6 +56,7 @@ const RegisterScreen = ({email, password, register, setEmail, setPassword, repea
         </TouchableOpacity>
       </View>
     </ScrollView>
+    </ImageBackground>
   )
   
 }
@@ -64,8 +66,8 @@ export default RegisterScreen
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
+    top:Dimensions.get('window').height / 10
   },
   image: {
     width: Dimensions.get('window').width / 2,
@@ -73,6 +75,9 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     width: '80%'
+  },
+  imagebg:{
+    flex: 1
   },
   textLogo:{
     fontSize:30,
