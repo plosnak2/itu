@@ -9,8 +9,7 @@ import Register from './Components/Register'
 
 const Stack = createNativeStackNavigator();
 
-class Routes extends React.Component {
-    render(){
+export default function App() {
         return(
             <NavigationContainer>
                 <Stack.Navigator initialRouteName={'Login'}>
@@ -25,14 +24,5 @@ class Routes extends React.Component {
                 </Stack.Navigator>
             </NavigationContainer>
         )
-    }
+    
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
