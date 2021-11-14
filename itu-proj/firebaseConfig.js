@@ -6,12 +6,13 @@ import "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCskFwS8-Sy1n7JGzBQg5Z0TMtY86RmpDs",
-  authDomain: "itu-kucharka.firebaseapp.com",
-  projectId: "itu-kucharka",
-  storageBucket: "itu-kucharka.appspot.com",
-  messagingSenderId: "394733085467",
-  appId: "1:394733085467:web:229b244968c5fc11f9e9be"
+  apiKey: "AIzaSyAbGdikQekczc39Yk2xeLwCybXdzgGkCtQ",
+  authDomain: "itu-proj-7551d.firebaseapp.com",
+  projectId: "itu-proj-7551d",
+  storageBucket: "itu-proj-7551d.appspot.com",
+  messagingSenderId: "837052797351",
+  appId: "1:837052797351:web:e378a5833811f104812682",
+  measurementId: "G-G4F5RZGZM7"
 };
 
 // Initialize Firebase
