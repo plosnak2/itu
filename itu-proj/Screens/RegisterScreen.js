@@ -5,18 +5,17 @@ import { auth } from '../firebase'
 import { Dimensions } from 'react-native';
 import Register from '../Components/Register'
 
-const LoginScreen = ({email, password, login, register, setEmail, setPassword}) => {
+const RegisterScreen = ({email, password, register, setEmail, setPassword, repeatpass, setRepeatpass}) => {
   const navigation = useNavigation()
   return (
     <ImageBackground source={require('../assets/cook.png')} resizeMode="cover" style={styles.imagebg}>
     <ScrollView
       contentContainerStyle={styles.container}
     >
-    
       
-      <Image source={require('../assets/logo.png')} style={styles.image} />
+      <Image source={require('../assets/logo.png')} style={styles.image}/>
       
-      <Text style={styles.textLogin}>Prihláste sa do aplikácie</Text>
+      <Text style={styles.textLogin}>Vytvorte si účet</Text>
       <View style={styles.inputContainer}>
         <TextInput
           placeholder="Zadajte email"
@@ -31,32 +30,38 @@ const LoginScreen = ({email, password, login, register, setEmail, setPassword}) 
           style={styles.input}
           secureTextEntry
         />
+        <TextInput
+          placeholder="Zadajte heslo znova"
+          value={repeatpass}
+          onChangeText={text => setRepeatpass(text)}
+          style={styles.input}
+          secureTextEntry
+        />
       </View>
 
       <View style={styles.buttonContainer}>
         <TouchableOpacity
-          onPress={login}
+          onPress={register}
           style={styles.button}
         >
-          <Text style={styles.buttonText}>Login</Text>
+          <Text style={styles.buttonText}>Registerovať</Text>
         </TouchableOpacity>
         
         <TouchableOpacity
           onPress={() =>
-            navigation.navigate('Register')
+            navigation.navigate('Login')
           }
         >
-          <Text style={styles.textReg}>Nemáte ešte účet? Zaregistrujte sa tu!</Text>
+          <Text style={styles.textReg}>Už máte vytvorený účet ? Prihláste sa tu!</Text>
         </TouchableOpacity>
       </View>
-      
     </ScrollView>
     </ImageBackground>
   )
   
 }
 
-export default LoginScreen
+export default RegisterScreen
 
 const styles = StyleSheet.create({
   container: {
@@ -68,11 +73,11 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width / 2,
     height:Dimensions.get('window').width / 2
   },
-  imagebg:{
-    flex: 1
-  },
   inputContainer: {
     width: '80%'
+  },
+  imagebg:{
+    flex: 1
   },
   textLogo:{
     fontSize:30,
