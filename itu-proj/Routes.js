@@ -2,9 +2,9 @@ import React from 'react'
 import Homepage from './Screens/homepage.js'
 import Recipe_screen from './Screens/Recipe_screen.js';
 import { NavigationContainer } from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-const Stack = createStackNavigator();
+const Stack = createNativeStackNavigator();
 
 class Routes extends React.Component {
     render(){
