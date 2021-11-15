@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { ScrollView, StyleSheet } from 'react-native'
-import Recipe from '../API/Recipe';
+import Recipe from '../Screens/RecipeScreen';
 import { RecipeRef } from '../firebaseConfig'
 
 class Recipe_screen extends Component {
@@ -17,7 +17,6 @@ class Recipe_screen extends Component {
       RecipeRef.doc(this.state.id).get().then((documentSnapshot) => {
          if (documentSnapshot.exists) {
             this.setState({ recipe: documentSnapshot.data() });
-            //console.log('User data: ', this.state.recipe);
          }
       });
    }

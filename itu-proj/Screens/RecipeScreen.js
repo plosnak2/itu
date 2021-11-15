@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Image, Text, View, StyleSheet, Dimensions } from 'react-native'
 
-class Recipe extends Component {
+class RecipeScreen extends Component {
     constructor(props) {
         super(props);
     };
@@ -29,7 +29,7 @@ class Recipe extends Component {
             </View>
         )
     }
-} export default Recipe
+} export default RecipeScreen
 
 const styles = StyleSheet.create({
     content: {
