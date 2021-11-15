@@ -8,7 +8,7 @@ const Navbar = () => {
     return (
         <View style={styles.navbar}>
             <TouchableOpacity onPress={() =>
-                navigation.navigate('Homepage')
+                navigation.navigate('Home')
               }>
             <View style={styles.item1}>
                 <Ionicons name="fast-food" size={40} color="white" />
