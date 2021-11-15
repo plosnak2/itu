@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { ScrollView, Image, Text, View, TouchableOpacity, StyleSheet, StatusBar, Platform } from 'react-native'
 import Recipes_page from '../API/Homepage';
 import { RecipeRef } from '../firebaseConfig'
-import Navbar from '../Components/Navbar';
+import Navbar from '../Static/Navbar';
 import { Dimensions } from 'react-native';
 
 class Homepage extends Component {
