@@ -2,16 +2,19 @@ import React, { Component } from 'react'
 import { ScrollView, Image, Text, View, TouchableOpacity, StyleSheet, StatusBar, Platform } from 'react-native'
 import Recipes_page from '../API/Homepage';
 import { RecipeRef } from '../firebaseConfig'
+import Navbar from '../Components/Navbar';
+import { Dimensions } from 'react-native';
 
 class Homepage extends Component {
     state = {
         Recipe: [],
         id: '',
     }
+    
 
     componentDidMount() {
-        let recipes = [];
         RecipeRef.onSnapshot((QuerySnapshot) => {
+            let recipes = [];
             QuerySnapshot.forEach((doc) => {
                 recipes.push({ id: doc.id, data: doc.data() });
                 this.setState({ id: doc.id })
@@ -19,10 +22,12 @@ class Homepage extends Component {
             });
             this.setState({ Recipe: recipes });
         });
-    }
+      }
+
 
     render() {
         return (
+            <View style={{flex:1}}>
             <ScrollView style={styles.content}>
                 {
                     this.state.Recipe.map((item, index) => (
@@ -39,6 +44,8 @@ class Homepage extends Component {
                     ))
                 }
             </ScrollView>
+            <Navbar />
+            </View>
         )
     }
 }
@@ -47,7 +54,7 @@ export default Homepage
 const styles = StyleSheet.create({
     content: {
         marginTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
-        flex: 1,
+        minHeight: Dimensions.get('window').height
     },
     container: {
         padding: 10,
