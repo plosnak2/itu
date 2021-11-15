@@ -45,6 +45,11 @@ const Login = () => {
         console.log('Logged in with:', user.email);
         AsyncStorage.setItem('email', email)
       })
+      .then(() => {
+        setEmail('')
+        setPassword('')
+        navigation.navigate('Home') 
+      })
       .catch(error => alert(error.message))
   }
 

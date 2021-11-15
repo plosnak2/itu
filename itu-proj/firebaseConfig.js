@@ -28,5 +28,7 @@ const db = firebase.firestore(app);
 
 export const RecipeRef = db.collection("recipe");
 
+export const UsersRef = db.collection("users");
+
 export {firebase};
 

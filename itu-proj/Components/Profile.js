@@ -1,43 +1,62 @@
-import React, { Component } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ScrollView, StyleSheet, Text, View, ActivityIndicator } from 'react-native'
 import Navbar from '../Static/Navbar';
 import ProfileScreen from '../Screens/ProfileScreen'
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { UsersRef } from '../firebaseConfig';
+import { auth } from '../firebase'
+import { useNavigation } from '@react-navigation/core'
 
 if (Platform.OS === 'android') {  
    if (!ActivityIndicator.defaultProps) ActivityIndicator.defaultProps = {};
    ActivityIndicator.defaultProps.color =  'gray';
  }
 
-class Profile extends Component {
-   constructor(props) {
-      super(props);
-      // Don't call this.setState() here!
-      this.state = {
-         email: '',
-         loading: true
-      };
-   }
+const Profile = () => {
+   const [email, setEmail] = useState('')
+   const [loading, setLoading] = useState(true)
+   const [favourites, setFavourites] = useState(0)
+   const navigation = useNavigation()
+   
+   
 
-   async componentDidMount(){
-      const result =  await AsyncStorage.getItem('email');
+   useEffect(() => {
+      (async () => {
+         const result = await AsyncStorage.getItem('email');
+         const user = await UsersRef.doc(result).get();
+         const number = user.data().favourites.length;
+         setFavourites(number);
+         setEmail(result);
+         setLoading(false);
+      })();
+   }, [])
+
+   const handleSignOut= () =>{
+      auth
+        .signOut()
+        .then(() => {
+            AsyncStorage.removeItem('email');
+            
+        })
+        .then(() => {
+            navigation.navigate('Login')
          
-      this.setState({email: result});
-      this.setState({loading: false})
+         })
+        .catch(error => alert(error.message))
     }
    
-   render() {
-      if(this.state.loading){
-         return(
-            <View style={[styles.container, styles.horizontal]}>
-               <ActivityIndicator size="large" color="#0782F9"/>
-            </View>
-            )
-      }
-      return (
-        <ProfileScreen  email={this.state.email}/>
-      )
+  
+   if(loading){
+      return(
+         <View style={[styles.container, styles.horizontal]}>
+            <ActivityIndicator size="large" color="#0782F9"/>
+         </View>
+         )
    }
+   return (
+      <ProfileScreen  email={email} favourites={favourites} handleSignOut={handleSignOut}/>
+   )
+   
 }
 export default Profile
 
