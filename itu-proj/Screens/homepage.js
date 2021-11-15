@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     },
     content: {
         marginTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
-        flex: 1,
+        minHeight: Dimensions.get('window').height
     },
     container: {
         padding: 10,
