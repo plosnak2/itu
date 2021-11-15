@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { ScrollView, Image, Text, View, TouchableOpacity, StyleSheet, StatusBar, Platform } from 'react-native'
 import HomeScreen from '../Screens/Homepage';
-import { RecipeRef } from '../firebaseConfig'
+import { RecipeRef } from '../firebaseConfig';
+import Navbar from '../Static/Navbar';
 
 class Home extends Component {
     state = {
@@ -27,6 +28,7 @@ class Home extends Component {
 
     render() {
         return (
+            <View style={{flex:1}}>
             <ScrollView style={styles.content}>
                 {
                     this.state.Recipe.map((item, index) => (
@@ -43,6 +45,8 @@ class Home extends Component {
                     ))
                 }
             </ScrollView>
+            <Navbar />
+            </View>
         )
     }
 }
