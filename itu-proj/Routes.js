@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Login from './Components/Login'
 import Register from './Components/Register'
+import Profile from './Components/Profile'
 
 const Stack = createNativeStackNavigator();
 
@@ -20,6 +21,7 @@ export default function App() {
                         options={{header: () => null}}
                     />
                     <Stack.Screen name="Recipe" component={Recipe} options={({ route }) => ({ title: route.params.name })}/>
+                    <Stack.Screen name="Profile" component={Profile} options={{ headerShown: false }}/>
                 </Stack.Navigator>
             </NavigationContainer>
         )
