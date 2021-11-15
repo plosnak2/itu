@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { ScrollView, Image, Text, View, TouchableOpacity, StyleSheet, StatusBar, Platform } from 'react-native'
-import HomeScreen from '../Screens/Homepage';
+import HomeScreen from '../Screens/homepage';
 import { RecipeRef } from '../firebaseConfig';
 import Navbar from '../Static/Navbar';
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Image, Text, View, StyleSheet, StatusBar, Platform } from 'react-native'
+import {Image, Text, View, StyleSheet, StatusBar, Platform, Dimensions } from 'react-native'
 
 class HomeScreen extends Component {
     constructor(props) {
