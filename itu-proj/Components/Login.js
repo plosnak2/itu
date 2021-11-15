@@ -16,7 +16,7 @@ const Login = () => {
     
     const unsubscribe = auth.onAuthStateChanged(async user => {
       if (user) {
-        navigation.replace("Homepage")
+        navigation.replace("Home")
       } else {
         setLoading(false)
       }
