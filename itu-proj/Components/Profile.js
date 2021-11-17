@@ -44,6 +44,10 @@ const Profile = () => {
          })
         .catch(error => alert(error.message))
     }
+
+    const navigateToFavourites = () => {
+      navigation.navigate('Favourites')
+    }
    
   
    if(loading){
@@ -54,7 +58,7 @@ const Profile = () => {
          )
    }
    return (
-      <ProfileScreen  email={email} favourites={favourites} handleSignOut={handleSignOut}/>
+      <ProfileScreen  email={email} favourites={favourites} handleSignOut={handleSignOut} navigateToFavourites={navigateToFavourites}/>
    )
    
 }
