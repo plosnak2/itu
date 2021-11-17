@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View, Alert } from 'react-native'
 import { auth } from '../firebase'
 import RegisterScreen from '../Screens/RegisterScreen'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 
@@ -23,6 +24,7 @@ const Register = () => {
       .then(userCredentials => {
         const user = userCredentials.user;
         console.log('Registered with:', user.email);
+        AsyncStorage.setItem('email', email)
         navigation.replace("Home")
       })
       .catch(error => alert(error.message))
