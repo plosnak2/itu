@@ -2,7 +2,7 @@ import React, { Component, useEffect } from 'react'
 import { ScrollView, StyleSheet } from 'react-native'
 import Recipe from '../Screens/RecipeScreen';
 import { RecipeRef, UsersRef } from '../firebaseConfig'
-import { LogBox } from 'react-native';
+import { LogBox, Text } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 LogBox.ignoreLogs(['Setting a timer']);
@@ -20,7 +20,13 @@ class Recipe_screen extends Component {
 
    async getUser() {
          const user = await AsyncStorage.getItem('email');
-         console.log(user)
+         UsersRef.doc(user).get().then((documentSnapshot) => {
+            if (documentSnapshot.exists) {
+               let array = [];
+               array.push(documentSnapshot.data())
+               array.map((item) => (item.rating[this.state.id] != null ? this.setState({rating: item.rating[this.state.id]}) : 0));
+            }
+         });
    }
 
    componentDidMount() {
@@ -29,28 +35,14 @@ class Recipe_screen extends Component {
             this.setState({ recipe: documentSnapshot.data() });
          }
       });
-      //this.getUser();
-      AsyncStorage.getItem("email")
-    .then(value => {
-      this.setState({ "name": value });
-    })
-    .done();
-    console.log(this.state.name)
-      UsersRef.doc('skuska@gmail.com').get().then((documentSnapshot) => {
-         if (documentSnapshot.exists) {
-            let array = [];
-            array.push(documentSnapshot.data())
-            array.map((item) => (item.rating[this.state.id] != null ? this.setState({rating: item.rating[this.state.id]}) : 0));
-            console.log(this.state.rating)
-         }
-      });
+      this.getUser();      
    }
 
    render() {
       return (
-         <ScrollView style={styles.content}>
+         
             <Recipe recipe={JSON.stringify(this.state.recipe)} rating={this.state.rating}/>
-         </ScrollView>
+         
       )
    }
 }

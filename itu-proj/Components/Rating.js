@@ -5,16 +5,16 @@ import { AirbnbRating } from 'react-native-ratings';
 const RecipeRating = (actualRating) => {
     let defaultRating = actualRating['actualRating'];
 
-    const reset = () => {
+    /*const reset = () => {
         defaultRating = 0;
-    }
+    }*/
     const ratingCompleted = (rating) => {
         defaultRating = rating;
       }
     return (
         <View style={{alignSelf: 'stretch'}}>
         <AirbnbRating size={20} defaultRating={defaultRating} onFinishRating={ratingCompleted} showRating={false}/>
-        <Button onPress={reset} title="Reset rating" color="#841584"/>
+        {/*<Button onPress={reset} title="Reset rating" color="#841584"/>*/}
         </View>
     )
     
