@@ -7,8 +7,9 @@ import Navbar from '../Static/Navbar';
 class Home extends Component {
     state = {
         Recipe: [],
+        subscribe: 'a',
     }
-    
+
     componentDidMount() {
         RecipeRef.onSnapshot((QuerySnapshot) => {
             let recipes = [];
@@ -54,7 +55,7 @@ export default Home
 
 const styles = StyleSheet.create({
     content: {
-        marginTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+        marginTop: Platform.OS === 'android' ? StatusBar.currentHeight : Platform.OS === 'ios' ? 40 : 0,
         flex: 1,
     },
     container: {
