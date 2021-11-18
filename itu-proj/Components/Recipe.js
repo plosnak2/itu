@@ -14,12 +14,13 @@ class Recipe_screen extends Component {
          id: this.props.route.params['id'],
          recipe: [],
          rating: 0,
-         name: '',
+         user: '',
       };
    }
 
    async getUser() {
          const user = await AsyncStorage.getItem('email');
+         this.setState({user: user})
          UsersRef.doc(user).get().then((documentSnapshot) => {
             if (documentSnapshot.exists) {
                let array = [];
@@ -39,10 +40,8 @@ class Recipe_screen extends Component {
    }
 
    render() {
-      return (
-         
-            <Recipe recipe={JSON.stringify(this.state.recipe)} rating={this.state.rating}/>
-         
+      return (         
+            <Recipe recipe={JSON.stringify(this.state.recipe)} rating={this.state.rating} user={this.state.user} id={this.state.id}/>        
       )
    }
 }

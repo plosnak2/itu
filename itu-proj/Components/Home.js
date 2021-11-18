@@ -26,7 +26,12 @@ class Home extends Component {
                 console.log(url);
             })*/
     }
-
+    rate = (rate, rate_count) => {
+        if(rate_count == 0){
+            return "Nehodnotené"
+        }
+        return (rate/rate_count)
+    }
     render() {
         return (
             <View style={{flex:1}}>
@@ -40,7 +45,7 @@ class Home extends Component {
                                 this.props.navigation.navigate('Recipe', { name: item.data.name, id: item.id })
                             }
                             }>
-                            <HomeScreen item={item} />
+                            <HomeScreen item={item} rate={this.rate(item.data.rate, item.data.rate_count)}/>
                         </TouchableOpacity>
 
                     ))

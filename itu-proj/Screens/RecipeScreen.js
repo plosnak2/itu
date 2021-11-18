@@ -5,24 +5,6 @@ import { Ionicons } from '@expo/vector-icons';
 import RecipeRating from '../Components/Rating';
 
 class RecipeScreen extends Component {
-    /*toogle = (open) => {
-        console.log("somtu")
-        this.setState({open: !open})
-        console.log(this.state.open)
-        //this.render();
-    }*/
-    /*
-    let image = this.state.open ? require('../assets/rate.png') : require('../assets/unrate.png')
-    <TouchableOpacity onPress={() => (this.toogle())}>
-                    {this.state.open ? <Ionicons name="star" size={30}/> : <Ionicons name="star-outline" size={30}/>}
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => (this.toogle(this.state.open))}>
-                    {this.state.open ? <Ionicons name="star" size={30}/> : <Ionicons name="star-outline" size={30}/>}
-                </TouchableOpacity>
-                <Text>{this.state.open}</Text>
-    */
-   
-
     render() {
         const my_recipe = JSON.parse(this.props.recipe)
         return (
@@ -33,7 +15,7 @@ class RecipeScreen extends Component {
                 <View style={styles.basic}>
                   <Text style={styles.text_title}>Tvoje hodnotenie:</Text>
                   <View style={{ paddingTop: 10, marginLeft: 10 }}>
-                    <RecipeRating actualRating={this.props.rating}/>
+                    <RecipeRating actualRating={this.props.rating} user={this.props.user} id={this.props.id} rate_count={my_recipe.rate_count} rate={my_recipe.rate}/>
                   </View>
                 </View>
                 <View style={styles.basic}>
