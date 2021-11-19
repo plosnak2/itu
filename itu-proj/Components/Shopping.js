@@ -11,6 +11,7 @@ class Shopping extends Component {
     constructor(props) {
         super(props);
         this.deleteList = this.deleteList.bind(this);
+        this.deleteItem = this.deleteItem.bind(this);
         this.state = {
             shopping: [],
             loaded: false
@@ -44,6 +45,17 @@ class Shopping extends Component {
             console.log('User updated!');
         });
     }
+
+    async deleteItem(index, key){
+        const reducedArr = [...this.state.shopping];
+        delete reducedArr[index].items[key];
+        this.setState({shopping: reducedArr})
+        const result = await AsyncStorage.getItem('email');
+        UsersRef.doc(result).update({shopping: this.state.shopping})
+        .then(() => {
+            console.log('User updated!');
+        });
+    }
     
     render() {
         if(this.state.loaded == false){
@@ -59,7 +71,7 @@ class Shopping extends Component {
                     <ScrollView style={styles.content}>
                         {this.state.shopping.map((item, index, array) => (
                             
-                                <ShoppingScreen item={item} index={index} deleteList={this.deleteList}/>
+                                <ShoppingScreen item={item} index={index} deleteList={this.deleteList} deleteItem={this.deleteItem}/>
                             
                         ))}
                     </ScrollView>

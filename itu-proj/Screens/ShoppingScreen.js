@@ -25,15 +25,19 @@ class ShoppingScreen extends Component {
                 <View style={styles.itemsview}>
                     <View style={styles.item}><Text style={styles.date}>Druh</Text></View>
                     <View style={styles.item}><Text style={styles.date}>Množstvo</Text></View>
+                    <View style={styles.item}><Text style={styles.date}></Text></View>
                 </View>
                     {
                         Object.entries(this.props.item.items).map(([key, value]) => {
-                            // Pretty straightforward - use key for the key and value for the value.
-                            // Just to clarify: unlike object destructuring, the parameter names don't matter here.
                             return(
                                 <View style={styles.itemsview}>
                                 <View style={styles.item}><Text style={styles.ingredient}>{key}</Text></View>
                                 <View style={styles.item}><Text style={styles.ingredient}>{value}</Text></View>
+                                <TouchableOpacity style={styles.item} onPress={() =>
+                                    this.props.deleteItem(this.props.index, key)
+                                  }>
+                                <Text style={styles.date}><Ionicons name="checkmark-outline" size={30} color="black"/></Text>
+                                </TouchableOpacity>
                                 </View>
                                 )
                         })
@@ -104,7 +108,7 @@ const styles = StyleSheet.create({
         marginTop:10
     },
     item:{
-        width:"50%",
+        width:"33%",
         alignItems: "center"
     },
     ingredient:{
