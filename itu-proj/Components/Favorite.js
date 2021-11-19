@@ -15,7 +15,6 @@ class Favourite extends Component {
     }
 
     async getUser() {
-        console.log("s")
         const user = await AsyncStorage.getItem('email');
         this.setState({user: user})
         UsersRef.doc(this.state.user).get().then((doc) => {
