@@ -20,7 +20,7 @@ class ProfileScreen extends Component {
                   <View style={styles.wrapper}>
                     <Text style={styles.wrapperedtext}>{this.props.email}</Text>
                   </View>
-                  <TouchableOpacity style={styles.wrapper}>
+                  <TouchableOpacity style={styles.wrapper} onPress={this.props.navigateToFavourites}>
                     <Text style={styles.favourites}>Obľúbené recepty: {this.props.favourites}</Text>
                     <Ionicons name="star" size={30} color="gold" />
                   </TouchableOpacity> 
