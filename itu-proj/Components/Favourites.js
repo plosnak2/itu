@@ -18,22 +18,36 @@ class Favourites extends Component {
     };
     
     
-    async componentDidMount() {
-        const result = await AsyncStorage.getItem('email');
-        const user =  await UsersRef.doc(result).get();
-        this.setState({numOfFavs: user.data().favourites.length})
-        await RecipeRef.onSnapshot((QuerySnapshot) => {
-            let recipes = [];
-            QuerySnapshot.forEach((doc) => {
-                if(user.data().favourites.includes(doc.id)){
-                    recipes.push({ id: doc.id, data: doc.data() });
-                }
-                
+    componentDidMount() {
+        this.unsubscribe = this.props.navigation.addListener('focus', async() => {
+            const result = await AsyncStorage.getItem('email');
+            const user =  await UsersRef.doc(result).get();
+            this.setState({numOfFavs: user.data().favourites.length})
+            await RecipeRef.onSnapshot((QuerySnapshot) => {
+                let recipes = [];
+                QuerySnapshot.forEach((doc) => {
+                    if(user.data().favourites.includes(doc.id)){
+                        recipes.push({ id: doc.id, data: doc.data() });
+                    }
+                    
+                });
+                this.setState({ Recipe: recipes });
             });
-            this.setState({ Recipe: recipes });
-        });
+            
+            this.setState({loaded:true})
+          });
         
-        this.setState({loaded:true})
+    }
+
+    componentWillUnmount () {
+        this.unsubscribe()
+    }
+
+    rate = (rate, rate_count) => {
+        if(rate_count == 0){
+            return "Nehodnotené"
+        }
+        return (rate/rate_count)
     }
 
     render() {
@@ -57,7 +71,7 @@ class Favourites extends Component {
                                         this.props.navigation.navigate('Recipe', { name: item.data.name, id: item.id })
                                     }
                                     }>
-                                    <HomeScreen item={item} />
+                                    <HomeScreen item={item} rate={this.rate(item.data.rate, item.data.rate_count)}/>
                                 </TouchableOpacity>
     
                             ))
