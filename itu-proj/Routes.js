@@ -21,7 +21,7 @@ export default function App() {
                         component={Home}
                         options={{header: () => null}}
                     />
-                    <Stack.Screen name="Recipe" component={Recipe} options={({ route }) => ({ title: route.params.name }), {headerRight: () => <Favourite  />}}/>
+                    <Stack.Screen name="Recipe" component={Recipe} options={({ route }) => ({ title: route.params.name , headerRight: () => <Favourite id={route.params.id} />})}/>
                     <Stack.Screen name="Profile" component={Profile} options={{ headerShown: false }}/>
                 </Stack.Navigator>
             </NavigationContainer>

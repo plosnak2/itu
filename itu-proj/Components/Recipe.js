@@ -9,7 +9,6 @@ LogBox.ignoreLogs(['Setting a timer']);
 class Recipe_screen extends Component {
    constructor(props) {
       super(props);
-      // Don't call this.setState() here!
       this.state = {
          id: this.props.route.params['id'],
          recipe: [],
