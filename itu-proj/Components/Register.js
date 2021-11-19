@@ -26,7 +26,6 @@ const Register = () => {
         const user = userCredentials.user;
         console.log('Registered with:', user.email);
         AsyncStorage.setItem('email', email)
-        navigation.replace("Home")
       })
       .then(() => {
         console.log("here")
@@ -34,6 +33,9 @@ const Register = () => {
           favourites: [],
           rating: {}
         })
+        setEmail('')
+        setPassword('')
+        navigation.navigate('Home')
       })
       .catch(error => alert(error.message))
     }
