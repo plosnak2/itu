@@ -19,7 +19,7 @@ class HomeScreen extends Component {
                     <View style={styles.icons}>
                         <Image style={{ width: 20, height: 20, right: 20 }} source={require('../assets/rate.png')} />
                         <Text style={styles.rate}>
-                            {this.props.item.data.rate}
+                            {this.props.rate}
                         </Text>
 
                         <Image style={{ width: 20, height: 20, left: 10 }} source={require('../assets/clock.png')} />
