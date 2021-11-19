@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {Image, Text, View, StyleSheet, StatusBar, Platform, Dimensions, TouchableOpacity } from 'react-native'
 import { Ionicons } from '@expo/vector-icons';
+import Moment from 'moment';
 
 class ShoppingScreen extends Component {
     constructor(props) {
@@ -19,7 +20,10 @@ class ShoppingScreen extends Component {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.bottomview}>
-                    <Text style={styles.date}>Nákup naplánovaný na: {new Date(this.props.item.date.toDate()).toLocaleString().slice(0, 12)}</Text>
+                    <Text style={styles.date}>Nákup naplánovaný na: {
+                        Moment(new Date(this.props.item.date.toDate())).format('DD.MM.YYYY')
+                        
+                    }</Text>
                     <Text style={styles.items}>Položky:</Text>
                 </View>
                 <View style={styles.itemsview}>
@@ -89,13 +93,13 @@ const styles = StyleSheet.create({
         color: "#0782F9"
     },
     date:{
-        fontSize:15,
+        fontSize:20,
         fontWeight: "bold",
         color: "#0782F9"
     },
     items:{
         marginTop:10,
-        fontSize:15,
+        fontSize:20,
         fontWeight: "bold",
         color: "#0782F9",
         
