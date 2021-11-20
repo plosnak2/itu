@@ -9,6 +9,7 @@ import Profile from './Components/Profile'
 import Favourite from './Components/Favorite.js';
 import Favourites from './Components/Favourites.js';
 import Shopping from './Components/Shopping.js';
+import MakeList from './Components/MakeList.js';
 
 
 const Stack = createNativeStackNavigator();
@@ -28,6 +29,7 @@ export default function App() {
                     <Stack.Screen name="Profile" component={Profile} options={{ headerShown: false }}/>
                     <Stack.Screen name="Favourites" component={Favourites} options={{ headerShown: false }}/>
                     <Stack.Screen name="Shopping" component={Shopping} options={{ headerShown: false }}/>
+                    <Stack.Screen name="MakeList" component={MakeList} options={{ headerShown: false }}/>
                 </Stack.Navigator>
             </NavigationContainer>
         )
