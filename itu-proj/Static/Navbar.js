@@ -22,7 +22,7 @@ const Navbar = () => {
             </View>
             </TouchableOpacity>
             <TouchableOpacity onPress={() =>
-                navigation.navigate('Profile')
+                navigation.replace('Profile')
               }>
             <View style={styles.item3}>
                 <Ionicons name="person" size={40} color="white" />
