@@ -1,12 +1,22 @@
 import { NavigationContainer } from '@react-navigation/native';
 import React, { Component } from 'react'
-import { Image, Text, View, StyleSheet, Dimensions, FlatList, ScrollView } from 'react-native'
+import { Image, Text, View, StyleSheet, Dimensions, FlatList, KeyboardAvoidingView } from 'react-native'
 import { Ionicons } from '@expo/vector-icons';
 import RecipeRating from '../Components/Rating';
 
 class RecipeScreen extends Component {
     render() {
         const my_recipe = JSON.parse(this.props.recipe)
+        if(my_recipe.ingredient == null){
+          return(
+            <KeyboardAvoidingView
+              style={styles.container}
+              behavior="padding"
+            >
+              <Text>LOADING</Text>
+            </KeyboardAvoidingView>
+          )
+        }
         return (
           <FlatList
             ListHeaderComponent={
@@ -25,9 +35,9 @@ class RecipeScreen extends Component {
                 <Text style={styles.text_title}>Ingrediencie:</Text>
               </View>
             }
-            data={my_recipe.ingredient}
+            data={Object.entries(my_recipe.ingredient)}
             renderItem={({ item }) => (
-              <Text style={styles.text_ingredient}>{item}</Text>
+              <Text style={styles.text_ingredient}>{item[1] + " " + item[0]}</Text>
             )}
             keyExtractor={(item, index) => index.toString()}
             ListFooterComponent={
