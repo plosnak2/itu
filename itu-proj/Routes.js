@@ -29,7 +29,7 @@ export default function App() {
                     <Stack.Screen name="Profile" component={Profile} options={{ headerShown: false }}/>
                     <Stack.Screen name="Favourites" component={Favourites} options={{ headerShown: false }}/>
                     <Stack.Screen name="Shopping" component={Shopping} options={{ headerShown: false }}/>
-                    <Stack.Screen name="MakeList" component={MakeList} options={{ headerShown: false }}/>
+                    <Stack.Screen name="MakeList" component={MakeList} options={() => ({ title: "Vytvoriť zoznam"})}/>
                 </Stack.Navigator>
             </NavigationContainer>
         )
