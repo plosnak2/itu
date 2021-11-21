@@ -33,7 +33,7 @@ const Dropdown = ({set}) => {
     searchable={true}
     searchPlaceholder="Zadajte ingredienciu, ktorú hľadáte"
     itemSeparator={true}
-    
+    mode='BADGE'
       multiple={true}
       min={0}
       max={items.length}
