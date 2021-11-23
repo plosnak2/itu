@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {Image, Text, View, StyleSheet, StatusBar, Platform, Dimensions } from 'react-native'
+import { Ionicons } from '@expo/vector-icons';
 
 class HomeScreen extends Component {
     constructor(props) {
@@ -9,7 +10,7 @@ class HomeScreen extends Component {
     render() {
         return (
             <View style={styles.column}>
-                <Image style={{ width: 40, height: 40, left: 10 }} source={{ uri: this.props.item.data.image }} />
+                <Image style={{ width: 60, height: 60, left: 10 }} source={{ uri: this.props.item.data.image }} />
 
                 <View style={styles.text}>
                     <Text style={styles.text_name}>
@@ -22,7 +23,8 @@ class HomeScreen extends Component {
                             {this.props.rate}
                         </Text>
 
-                        <Image style={{ width: 20, height: 20, left: 10 }} source={require('../assets/clock.png')} />
+                        <Ionicons name="alarm" size={20} style={{left: 10}} color="black" />
+                        {/*<Image style={{ width: 20, height: 20, left: 10 }} source={require('../assets/clock.png')} />*/}
                         <Text style={styles.time}>
                             {this.props.item.data.time}
                         </Text>

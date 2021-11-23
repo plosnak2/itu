@@ -30,5 +30,7 @@ export const RecipeRef = db.collection("recipe");
 
 export const UsersRef = db.collection("users");
 
+export const IngredientRef = db.collection("ingredient");
+
 export {firebase};
 
