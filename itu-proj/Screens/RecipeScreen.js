@@ -1,8 +1,9 @@
 import { NavigationContainer } from '@react-navigation/native';
 import React, { Component } from 'react'
-import { Image, Text, View, StyleSheet, Dimensions, FlatList, KeyboardAvoidingView } from 'react-native'
+import { Image, Text, View, StyleSheet, Dimensions, FlatList, KeyboardAvoidingView,TouchableOpacity } from 'react-native'
 import { Ionicons } from '@expo/vector-icons';
 import RecipeRating from '../Components/Rating';
+import Navigation from '../Static/Navigate';
 
 class RecipeScreen extends Component {
     render() {
@@ -41,9 +42,13 @@ class RecipeScreen extends Component {
             )}
             keyExtractor={(item, index) => index.toString()}
             ListFooterComponent={
+              <View>
               <Text style={styles.text}>Postup: {my_recipe.instructions}</Text>
+              <Navigation place={"MakeList"} optional={my_recipe.ingredient}/>
+              </View>
             }
           />
+          
         );
     }
 } export default RecipeScreen
