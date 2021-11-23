@@ -22,7 +22,7 @@ const Navbar = () => {
             </View>
             </TouchableOpacity>
             <TouchableOpacity onPress={() =>
-                navigation.replace('Shopping')
+                navigation.navigate('Shopping')
               }>
             <View style={styles.item2}>
                 <Ionicons name="list-outline" size={40} color="white" />
@@ -30,7 +30,7 @@ const Navbar = () => {
             </View>
             </TouchableOpacity>
             <TouchableOpacity onPress={() =>
-                navigation.replace('Profile')
+                navigation.navigate('Profile')
               }>
             <View style={styles.item3}>
                 <Ionicons name="person" size={40} color="white" />
