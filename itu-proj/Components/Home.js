@@ -80,7 +80,7 @@ class Home extends Component {
                     <Dropdown set={this.filtered_ingredients} />
                     <View style={{ flexDirection: 'row', justifyContent: 'center'}}>
                         <Text style={{ marginTop: 15 }}>Recepty iba s týmito surovinami, ktoré sú zadané</Text>
-                        <Switch value={this.state.checked} color="orange" onValueChange={() => this.setState({checked: !this.state.checked})}/>
+                        <Switch value={this.state.checked} color="orange" onValueChange={() => {this.setState({checked: !this.state.checked}); this.filtered_ingredients(this.state.filter)}}/>
                     </View>
                 </View>
                 <ScrollView style={styles.content}>
