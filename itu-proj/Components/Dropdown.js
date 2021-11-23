@@ -34,6 +34,8 @@ const Dropdown = ({set}) => {
     searchPlaceholder="Zadajte ingredienciu, ktorú hľadáte"
     itemSeparator={true}
     mode='BADGE'
+    badgeDotColors={'orange'}
+    badgeColors={['#0782F9']}
       multiple={true}
       min={0}
       max={items.length}
