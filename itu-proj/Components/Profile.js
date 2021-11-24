@@ -17,18 +17,22 @@ const Profile = () => {
    const [loading, setLoading] = useState(true)
    const [favourites, setFavourites] = useState(0)
    const navigation = useNavigation()
-   
+   let unsubscribe = null
    
 
    useEffect(() => {
-      (async () => {
+      unsubscribe = navigation.addListener('focus', async() => {
          const result = await AsyncStorage.getItem('email');
          const user = await UsersRef.doc(result).get();
          const number = user.data().favourites.length;
          setFavourites(number);
          setEmail(result);
          setLoading(false);
-      })();
+      });
+
+      return() => {
+         unsubscribe()
+      }
    }, [])
 
    const handleSignOut= () =>{
@@ -46,7 +50,7 @@ const Profile = () => {
     }
 
     const navigateToFavourites = () => {
-      navigation.replace('Favourites')
+      navigation.navigate('Favourites')
     }
    
   

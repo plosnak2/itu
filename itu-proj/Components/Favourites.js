@@ -92,7 +92,7 @@ export default Favourites
 
 const styles = StyleSheet.create({
     content: {
-        marginTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+        marginTop: Platform.OS === 'android' ? StatusBar.currentHeight : Platform.OS === 'ios' ? 40 : 0,
         flex: 1,
     },
     container: {

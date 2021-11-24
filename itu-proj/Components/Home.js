@@ -86,7 +86,7 @@ class Home extends Component {
         return (
             <ImageBackground source={require('../assets/profilebg.png')} resizeMode="cover" style={styles.imagebg} imageStyle={{ opacity: 0.1 }}>
                 <View style={{ flex: 1 }}>
-                    <View style={{ marginTop: Platform.OS === 'android' ? StatusBar.currentHeight : Platform.OS === 'ios' ? 40 : 0, paddingHorizontal: 10 }}>
+                    <View style={{ marginTop: Platform.OS === 'android' ? StatusBar.currentHeight : Platform.OS === 'ios' ? 40 : 0, paddingHorizontal: 10, zIndex:100 }}>
                         <Dropdown set={this.filtered_ingredients} />
                         <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
                             <Text style={{ marginTop: 15 }}>Recepty iba s týmito surovinami, ktoré sú zadané</Text>

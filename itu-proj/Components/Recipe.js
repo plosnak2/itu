@@ -30,13 +30,20 @@ class Recipe_screen extends Component {
    }
 
    componentDidMount() {
-      RecipeRef.doc(this.state.id).get().then((documentSnapshot) => {
-         if (documentSnapshot.exists) {
-            this.setState({ recipe: documentSnapshot.data() });
-         }
-      });
-      this.getUser();      
+      this.unsubscribe = this.props.navigation.addListener('focus', async() => {
+         RecipeRef.doc(this.state.id).get().then((documentSnapshot) => {
+            if (documentSnapshot.exists) {
+               this.setState({ recipe: documentSnapshot.data() });
+            }
+         });
+         this.getUser();
+      })
+            
    }
+
+   componentWillUnmount () {
+      this.unsubscribe()
+  }
 
    render() {
       return (         
