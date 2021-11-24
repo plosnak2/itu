@@ -4,8 +4,12 @@ import { Image, Text, View, StyleSheet, Dimensions, FlatList, KeyboardAvoidingVi
 import { Ionicons } from '@expo/vector-icons';
 import RecipeRating from '../Components/Rating';
 import Navigation from '../Static/Navigate';
+import Timer from '../Components/Timer';
 
 class RecipeScreen extends Component {
+   constructor(props){
+     super(props)
+   }
     render() {
         const my_recipe = JSON.parse(this.props.recipe)
         if(my_recipe.ingredient == null){
@@ -44,6 +48,7 @@ class RecipeScreen extends Component {
             ListFooterComponent={
               <View>
               <Text style={styles.text}>Postup: {my_recipe.instructions}</Text>
+              <Timer time={my_recipe.instructions_time} instructions={my_recipe.instructions} navigateToHome={this.props.navigateToHome} navigation={this.props.navigation}/>
               </View>
             }
           />
