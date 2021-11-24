@@ -44,7 +44,6 @@ class RecipeScreen extends Component {
             ListFooterComponent={
               <View>
               <Text style={styles.text}>Postup: {my_recipe.instructions}</Text>
-              <Navigation place={"MakeList"} optional={my_recipe.ingredient}/>
               </View>
             }
           />

@@ -10,6 +10,7 @@ class MakeList extends Component {
         super(props);
         this.state = {
             ingredients: this.props.route.params['data'],
+            filter: this.props.route.params['filter'],
             shop: '',
             date: new Date(),
             mode: 'date',
@@ -31,6 +32,14 @@ class MakeList extends Component {
     async componentDidMount(){
         const result = await AsyncStorage.getItem('email');
         const user =  await UsersRef.doc(result).get();
+        
+        Object.entries(this.props.route.params['data']).map(([key, value]) => { 
+            this.state.filter.forEach(element => {
+                if(element == key){
+                    delete this.state.ingredients[key]
+                } 
+            });
+        })
         
         this.setState({shopping: user.data().shopping})
         this.setState({loaded: true})
