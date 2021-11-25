@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Image, Text, View, StyleSheet, StatusBar, Platform, Dimensions, ImageBackground, TouchableOpacity } from 'react-native'
+import {Image, Text, View, StyleSheet, StatusBar, Platform, Dimensions, ImageBackground, TouchableOpacity, ScrollView } from 'react-native'
 import Navbar from '../Static/Navbar'
 import { useNavigation } from '@react-navigation/core'
 
@@ -8,7 +8,8 @@ const EmptyFavourites = () => {
 
     return (
         <ImageBackground source={require('../assets/profilebg.png')} resizeMode="cover" style={styles.imagebg} imageStyle={{opacity: 0.1}}>
-            <View style={styles.container}>
+            <View style={{flex:1}}>
+            <ScrollView contentContainerStyle={styles.container}>
                 <Image source={require('../assets/sad.png')} style={styles.image}/>
                 <Text style={styles.text}>Nemáte žiadne obľúbené recepty</Text>
                 <TouchableOpacity style={styles.wrapper} onPress={() =>
@@ -16,6 +17,7 @@ const EmptyFavourites = () => {
                 }>
                     <Text style={styles.favourites}>Prehľadávať recepty</Text>
                 </TouchableOpacity>
+                </ScrollView>
                 <Navbar />
             </View>
         </ImageBackground>

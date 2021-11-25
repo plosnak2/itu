@@ -79,8 +79,9 @@ class Shopping extends Component {
                                     <ShoppingScreen item={item} index={index} deleteList={this.deleteList} deleteItem={this.deleteItem}/>
                                 
                             ))}
+                            <View style={{marginTop:200}}></View>
                         </ScrollView>
-                        <View style={{marginTop:100}}></View>
+                        
                         <Navbar />
                         
                     </View>

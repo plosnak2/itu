@@ -1,44 +1,43 @@
 import React from 'react'
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, Dimensions } from 'react-native'
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/core'
 
 const Navbar = () => {
     const navigation = useNavigation()
     return (
+        <View>
         <View style={styles.navbar}>
             <TouchableOpacity onPress={() =>
                 navigation.navigate('Home')
               }>
             <View style={styles.item1}>
-                <Ionicons name="fast-food" size={40} color="white" />
-                <Text style={styles.text}>Recepty</Text>
+                <Ionicons name="fast-food" size={45} color="white" />
+                
             </View>
             </TouchableOpacity>
-            <TouchableOpacity>
-            <View style={styles.item2}>
-                <Ionicons name="add-circle" size={40} color="white" />
-                <Text style={styles.text}>Pridať</Text>
-            </View>
-            </TouchableOpacity>
+            
             <TouchableOpacity onPress={() =>
                 navigation.navigate('Shopping')
               }>
             <View style={styles.item2}>
-                <Ionicons name="list-outline" size={40} color="white" />
-                <Text style={styles.text}>Zoznamy</Text>
+                <Ionicons name="cart-outline" size={45} color="white" />
+                
             </View>
             </TouchableOpacity>
             <TouchableOpacity onPress={() =>
                 navigation.navigate('Profile')
               }>
             <View style={styles.item3}>
-                <Ionicons name="person" size={40} color="white" />
-                <Text style={styles.text}>Profil</Text>
+                <Ionicons name="person" size={45} color="white" />
+                
             </View>
             </TouchableOpacity>
             
         </View>
+        
+        </View>
+        
     )
 }
 
@@ -52,32 +51,56 @@ const styles = StyleSheet.create({
         right: 0,
         alignSelf: 'stretch',
         flex: 1,
-        width: "100%",
         backgroundColor: '#0782F9',
         height: 90,
         borderWidth: 1,
-        borderTopLeftRadius: 10,
-        borderTopRightRadius: 10,
+        borderRadius:20,
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        paddingLeft:50,
+        paddingRight:50,
+        width: "90%",
+        marginLeft: "5%",
+        marginBottom: 20,
+        shadowColor: "black",
+        shadowOffset: {
+            width:0,
+            height:10
+        },
+        shadowOpacity: 0.3,
+        paddingTop:20,
+      
     },
     item1:{
-        marginLeft:30,
-        padding:10,
+        
+        
         alignItems: 'center'
     },
     item3:{
-        marginRight:30,
-        padding:10,
+        
+        
         alignItems: 'center'
     },
     item2:{
-        padding:10,
-        alignItems: 'center'
+        
+        alignItems: 'center',
+        
     },
     text:{
         fontSize:15,
         fontWeight: 'bold',
         color: 'white'
+    },
+    add:{
+        position:"absolute",
+        bottom:80,
+        left:(Dimensions.get('window').width / 2) - 50,
+        shadowColor: "black",
+        shadowOffset: {
+            width:0,
+            height:10
+        },
+        shadowOpacity: 0.2,
+        paddingTop:20,
     }
 })
