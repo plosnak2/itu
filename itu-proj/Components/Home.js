@@ -5,6 +5,8 @@ import { RecipeRef } from '../firebaseConfig';
 import Navbar from '../Static/Navbar';
 import Dropdown from './Dropdown';
 import { Switch } from 'react-native-elements';
+import { Ionicons } from '@expo/vector-icons';
+import Add from '../Static/AddButton';
 
 class Home extends Component {
     state = {
@@ -84,7 +86,9 @@ class Home extends Component {
             )
         }
         return (
+            
             <ImageBackground source={require('../assets/profilebg.png')} resizeMode="cover" style={styles.imagebg} imageStyle={{ opacity: 0.1 }}>
+            
                 <View style={{ flex: 1 }}>
                     <View style={{ marginTop: Platform.OS === 'android' ? StatusBar.currentHeight : Platform.OS === 'ios' ? 40 : 0, paddingHorizontal: 10, zIndex:100 }}>
                         <Dropdown set={this.filtered_ingredients} />
@@ -111,9 +115,13 @@ class Home extends Component {
                                 />
                             </TouchableOpacity>
                         ))}
+                        
                     </ScrollView>
+                    <Add />
                     <Navbar />
+                   
                 </View>
+               
             </ImageBackground>
         );
     }
@@ -136,4 +144,10 @@ const styles = StyleSheet.create({
         flex: 1,
         opacity: 10
     },
+    add:{
+        position:"absolute",
+        zIndex:100,
+        top:0
+        
+    }
 })
