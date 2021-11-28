@@ -25,8 +25,8 @@ if (firebase.apps.length === 0) {
 }
 
 const db = firebase.firestore(app);
-
+const storage = firebase.storage(app)
 export const RecipeRef = db.collection("recipe");
 
-export {firebase};
+export {firebase, storage};
 

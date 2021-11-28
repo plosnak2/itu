@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginScreen from './Screens/LoginScreen';
 import Login from './Components/Login'
 import Register from './Components/Register'
+import NewRecipe from './Screens/NewRecipe.js';
 
 const Stack = createNativeStackNavigator();
 
@@ -21,6 +22,7 @@ export default function App() {
                         options={{header: () => null}}
                     />
                     <Stack.Screen name="Recipe_screen" component={Recipe_screen} options={({ route }) => ({ title: route.params.name })}/>
+                    <Stack.Screen name="NewRecipe" component={NewRecipe} options={{ headerShown: false }}/>
                 </Stack.Navigator>
             </NavigationContainer>
         )

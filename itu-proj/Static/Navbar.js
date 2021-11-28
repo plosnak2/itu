@@ -15,7 +15,9 @@ const Navbar = () => {
                 <Text style={styles.text}>Recepty</Text>
             </View>
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() =>
+                navigation.navigate('NewRecipe')
+              }>
             <View style={styles.item2}>
                 <Ionicons name="add-circle" size={40} color="white" />
                 <Text style={styles.text}>Pridať recept</Text>
