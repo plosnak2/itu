@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { auth } from '../firebase'
 import LoginScreen from '../Screens/LoginScreen'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 const Login = () => {
@@ -16,7 +17,7 @@ const Login = () => {
     
     const unsubscribe = auth.onAuthStateChanged(async user => {
       if (user) {
-        navigation.replace("Homepage")
+        navigation.replace("Home")
       } else {
         setLoading(false)
       }
@@ -26,22 +27,18 @@ const Login = () => {
     return unsubscribe
   }, [])
 
-  /*const handleSignUp = () => {
-    auth
-      .createUserWithEmailAndPassword(email, password)
-      .then(userCredentials => {
-        const user = userCredentials.user;
-        console.log('Registered with:', user.email);
-      })
-      .catch(error => alert(error.message))
-  }*/
-
   const handleLogin = () => {
     auth
       .signInWithEmailAndPassword(email, password)
       .then(userCredentials => {
         const user = userCredentials.user;
         console.log('Logged in with:', user.email);
+        AsyncStorage.setItem('email', email)
+      })
+      .then(() => {
+        setEmail('')
+        setPassword('')
+        navigation.navigate('Home') 
       })
       .catch(error => alert(error.message))
   }

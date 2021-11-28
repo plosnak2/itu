@@ -8,7 +8,7 @@ const Navbar = () => {
     return (
         <View style={styles.navbar}>
             <TouchableOpacity onPress={() =>
-                navigation.navigate('Homepage')
+                navigation.navigate('Home')
               }>
             <View style={styles.item1}>
                 <Ionicons name="fast-food" size={40} color="white" />
@@ -20,15 +20,26 @@ const Navbar = () => {
               }>
             <View style={styles.item2}>
                 <Ionicons name="add-circle" size={40} color="white" />
-                <Text style={styles.text}>Pridať recept</Text>
+                <Text style={styles.text}>Pridať</Text>
             </View>
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() =>
+                navigation.navigate('Shopping')
+              }>
+            <View style={styles.item2}>
+                <Ionicons name="list-outline" size={40} color="white" />
+                <Text style={styles.text}>Zoznamy</Text>
+            </View>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() =>
+                navigation.navigate('Profile')
+              }>
             <View style={styles.item3}>
                 <Ionicons name="person" size={40} color="white" />
                 <Text style={styles.text}>Profil</Text>
             </View>
             </TouchableOpacity>
+            
         </View>
     )
 }
@@ -53,12 +64,12 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between'
     },
     item1:{
-        marginLeft:50,
+        marginLeft:30,
         padding:10,
         alignItems: 'center'
     },
     item3:{
-        marginRight:50,
+        marginRight:30,
         padding:10,
         alignItems: 'center'
     },

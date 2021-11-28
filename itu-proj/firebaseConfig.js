@@ -28,5 +28,8 @@ const db = firebase.firestore(app);
 const storage = firebase.storage(app)
 export const RecipeRef = db.collection("recipe");
 
-export {firebase, storage};
+export const UsersRef = db.collection("users");
 
+export const IngredientRef = db.collection("ingredient");
+
+export {firebase, storage};
