@@ -12,8 +12,8 @@ const Navbar = () => {
                 navigation.navigate('Home')
               }>
             <View style={styles.item1}>
+
                 <Ionicons name="fast-food" size={45} color="white" />
-                
             </View>
             </TouchableOpacity>
             
