@@ -39,7 +39,7 @@ export default function App() {
                     <Stack.Screen name="Favourites" component={Favourites} options={{ headerShown: true, title: "Obľúbené" }}/>
                     <Stack.Screen name="Shopping" component={Shopping} options={{ headerShown: false }}/>
                     <Stack.Screen name="MakeList" component={MakeList} options={() => ({ title: "Vytvoriť zoznam"})}/>
-                    <Stack.Screen name="NewRecipe" component={NewRecipe} options={{ headerShown: false }}/>
+                    <Stack.Screen name="NewRecipe" component={NewRecipe} options={() => ({ title: "Pridať recept"})}/>
                     <Stack.Screen name="Cooking" component={Cooking} options={() => ({ title: "Varíme"})}/>
 
                 </Stack.Navigator>

@@ -130,12 +130,10 @@ class Home extends Component {
                             </TouchableOpacity>
                         ))}
                         
-                    </ScrollView>
-                    <Add />
+                    </ScrollView> 
                     <Navbar />
-                   
+                    <Add />
                 </View>
-               
             </ImageBackground>
         );
     }

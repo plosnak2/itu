@@ -6,9 +6,11 @@ import { useNavigation } from '@react-navigation/core'
 const Add = () => {
     const navigation = useNavigation()
     return (
-        <TouchableOpacity>
-            <View style={styles.navbar}>
-                <Ionicons name="add-circle" size={100} color="#50BE25" />
+        <TouchableOpacity style={styles.navbar} onPress={() =>
+            navigation.navigate("NewRecipe")
+          }>
+            <View >
+                <Ionicons name="add-circle" size={100} color="red" />
             </View>
         </TouchableOpacity>
         
@@ -25,7 +27,6 @@ const styles = StyleSheet.create({
         bottom: 120,
         right: 0,
         alignSelf: 'stretch',
-        flex: 1,
-        
+        flex: 1
     }
 })

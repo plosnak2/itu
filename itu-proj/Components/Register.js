@@ -31,7 +31,8 @@ const Register = () => {
         console.log("here")
         UsersRef.doc(email).set({
           favourites: [],
-          rating: {}
+          rating: {},
+          shopping: []
         })
         setEmail('')
         setPassword('')
