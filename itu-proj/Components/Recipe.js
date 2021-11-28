@@ -15,6 +15,7 @@ class Recipe_screen extends Component {
          rating: 0,
          user: '',
       };
+      this.navigateToHome = this.navigateToHome.bind(this)
    }
 
    async getUser() {
@@ -45,9 +46,12 @@ class Recipe_screen extends Component {
       this.unsubscribe()
   }
 
+   navigateToHome () {
+      this.props.navigation.navigate("Home")
+   }
    render() {
       return (         
-            <Recipe recipe={JSON.stringify(this.state.recipe)} rating={this.state.rating} user={this.state.user} id={this.state.id}/>        
+            <Recipe navigation={this.props.navigation} navigateToHome={this.navigateToHome} recipe={JSON.stringify(this.state.recipe)} rating={this.state.rating} user={this.state.user} id={this.state.id}/>        
       )
    }
 }
