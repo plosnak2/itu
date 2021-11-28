@@ -112,7 +112,7 @@ const NewRecipeScreen = (props) => {
                         color="#333"
                         onPress={() => {
                             props.handleSubmit(),
-                            navigation.navigate('Homepage')
+                            navigation.navigate('Home')
                             }}
                     />
                 </View>
