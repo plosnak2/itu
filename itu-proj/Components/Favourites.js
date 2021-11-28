@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ScrollView, Image, Text, View, TouchableOpacity, StyleSheet, StatusBar, Platform, ActivityIndicator } from 'react-native'
+import { ScrollView, Image, Text, View, TouchableOpacity, StyleSheet, StatusBar, Platform, ActivityIndicator, ImageBackground } from 'react-native'
 import HomeScreen from '../Screens/homepage';
 import { RecipeRef } from '../firebaseConfig';
 import Navbar from '../Static/Navbar';
@@ -60,25 +60,36 @@ class Favourites extends Component {
         } else {
             if(this.state.numOfFavs != 0){
                 return (
-                    <View style={{flex:1}}>
+                    <ImageBackground source={require('../assets/profilebg.png')} resizeMode="cover" style={styles.imagebg} imageStyle={{ opacity: 0.1 }}>
+            
+                <View style={{ flex: 1 }}>
+                    
                     <ScrollView style={styles.content}>
-                        {
-                            this.state.Recipe.map((item, index) => (
-                                <TouchableOpacity
-                                    key={item.id}
-                                    style={styles.container}
-                                    onPress={() => {
-                                        this.props.navigation.navigate('Recipe', { name: item.data.name, id: item.id })
-                                    }
-                                    }>
-                                    <HomeScreen item={item} rate={this.rate(item.data.rate, item.data.rate_count)}/>
-                                </TouchableOpacity>
-    
-                            ))
-                        }
+                        {this.state.Recipe.map((item, index) => (
+                            <TouchableOpacity
+                                key={item.id}
+                                style={styles.container}
+                                onPress={() => {
+                                    this.props.navigation.navigate("Recipe", {
+                                        name: item.data.name,
+                                        id: item.id,
+                                    });
+                                }}
+                            >
+                                <HomeScreen
+                                    item={item}
+                                    rate={this.rate(item.data.rate, item.data.rate_count)}
+                                />
+                            </TouchableOpacity>
+                        ))}
+                        
                     </ScrollView>
+                    
                     <Navbar />
-                    </View>
+                   
+                </View>
+               
+            </ImageBackground>
                 )
             } else {
                 return(
@@ -92,13 +103,15 @@ export default Favourites
 
 const styles = StyleSheet.create({
     content: {
+        paddingHorizontal: 10,
         marginTop: Platform.OS === 'android' ? StatusBar.currentHeight : Platform.OS === 'ios' ? 40 : 0,
         flex: 1,
     },
     container: {
         padding: 10,
         marginTop: 3,
-        backgroundColor: '#d9f9b1',
+        backgroundColor: 'orange',
+        borderRadius: 10,
     },
     container2: {
         flex: 1,
@@ -108,5 +121,9 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-around",
         padding: 10
+    },
+    imagebg: {
+        flex: 1,
+        opacity: 10
     }
 })
