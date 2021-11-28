@@ -3,7 +3,7 @@ import {Image, Text, View, StyleSheet, StatusBar, Platform, Dimensions, ImageBac
 import Navbar from '../Static/Navbar'
 import { useNavigation } from '@react-navigation/core'
 
-const EmptyFavourites = () => {
+const EmptyShopping = () => {
     const navigation = useNavigation();
 
     return (
@@ -11,12 +11,9 @@ const EmptyFavourites = () => {
             <View style={{flex:1}}>
             <ScrollView contentContainerStyle={styles.container}>
                 <Image source={require('../assets/sad.png')} style={styles.image}/>
-                <Text style={styles.text}>Nemáte žiadne obľúbené recepty</Text>
-                <TouchableOpacity style={styles.wrapper} onPress={() =>
-                    navigation.navigate('Home')
-                }>
-                    <Text style={styles.favourites}>Prehľadávať recepty</Text>
-                </TouchableOpacity>
+                <Text style={styles.text}>Aktuálne nemáte žiadne nákupné zoznamy</Text>
+                
+                
                 </ScrollView>
                 <Navbar />
             </View>
@@ -24,13 +21,13 @@ const EmptyFavourites = () => {
     )
     
 }
-export default EmptyFavourites
+export default EmptyShopping
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        marginTop: Dimensions.get('window').height/5
+        justifyContent: "center"
     },
     imagebg:{
         flex: 1,
@@ -44,7 +41,8 @@ const styles = StyleSheet.create({
         marginTop:20,
         fontSize:25,
         fontWeight: 'bold',
-        color:'#0782F9'
+        color:'#0782F9',
+        textAlign:"center"
     },
     wrapper:{
         backgroundColor:'#0782F9',

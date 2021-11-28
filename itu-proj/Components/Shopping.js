@@ -5,7 +5,7 @@ import { RecipeRef } from '../firebaseConfig';
 import Navbar from '../Static/Navbar';
 import { UsersRef } from '../firebaseConfig';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import EmptyFavourites from '../Screens/EmptyFavourites';
+import EmptyShopping from '../Screens/EmptyShopping';
 
 class Shopping extends Component {
     constructor(props) {
@@ -65,22 +65,29 @@ class Shopping extends Component {
                 </View>
             )
         } else {
-            return(
-                <ImageBackground source={require('../assets/profilebg.png')} resizeMode="cover" style={styles.imagebg} imageStyle={{opacity: 0.1}}>
-                <View style={{flex:1}}>
-                    <ScrollView style={styles.content}>
-                        {this.state.shopping.map((item, index, array) => (
-                            
-                                <ShoppingScreen item={item} index={index} deleteList={this.deleteList} deleteItem={this.deleteItem}/>
-                            
-                        ))}
-                    </ScrollView>
-                    <View style={{marginTop:100}}></View>
-                    <Navbar />
-                    
-                </View>
-                </ImageBackground>
-            )
+            if(this.state.shopping.length == 0){
+                return(
+                    <EmptyShopping></EmptyShopping>
+                )
+            } else {
+                return(
+                    <ImageBackground source={require('../assets/profilebg.png')} resizeMode="cover" style={styles.imagebg} imageStyle={{opacity: 0.1}}>
+                    <View style={{flex:1}}>
+                        <ScrollView style={styles.content}>
+                            {this.state.shopping.map((item, index, array) => (
+                                
+                                    <ShoppingScreen item={item} index={index} deleteList={this.deleteList} deleteItem={this.deleteItem}/>
+                                
+                            ))}
+                            <View style={{marginTop:200}}></View>
+                        </ScrollView>
+                        
+                        <Navbar />
+                        
+                    </View>
+                    </ImageBackground>
+                )
+            }
         }
     }
 }

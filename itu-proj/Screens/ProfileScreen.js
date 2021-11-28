@@ -17,9 +17,9 @@ class ProfileScreen extends Component {
               <ScrollView contentContainerStyle={styles.container}>
                   <Image source={require('../assets/profilepic.png')} style={styles.image}/>
                   <Text style={styles.text}>Uživateľský mail</Text>
-                  <View style={styles.wrapper}>
-                    <Text style={styles.wrapperedtext}>{this.props.email}</Text>
-                  </View>
+                  
+                    <Text style={styles.mail}>{this.props.email}</Text>
+                  
                   <TouchableOpacity style={styles.wrapper} onPress={this.props.navigateToFavourites}>
                     <Text style={styles.favourites}>Obľúbené recepty: {this.props.favourites}</Text>
                     <Ionicons name="star" size={30} color="gold" />
@@ -54,6 +54,13 @@ const styles = StyleSheet.create({
     },
 
     text:{
+      marginTop:20,
+      fontSize:30,
+      fontWeight: 'bold',
+      color:'#0782F9'
+    },
+
+    mail:{
       marginTop:20,
       fontSize:25,
       fontWeight: 'bold',

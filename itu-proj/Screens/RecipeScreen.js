@@ -4,8 +4,12 @@ import { Image, Text, View, StyleSheet, Dimensions, FlatList, KeyboardAvoidingVi
 import { Ionicons } from '@expo/vector-icons';
 import RecipeRating from '../Components/Rating';
 import Navigation from '../Static/Navigate';
+import Timer from '../Components/Cooking';
 
 class RecipeScreen extends Component {
+   constructor(props){
+     super(props)
+   }
     render() {
         const my_recipe = JSON.parse(this.props.recipe)
         if(my_recipe.ingredient == null){
@@ -44,6 +48,9 @@ class RecipeScreen extends Component {
             ListFooterComponent={
               <View>
               <Text style={styles.text}>Postup: {my_recipe.instructions}</Text>
+              <TouchableOpacity style={styles.wrapper} onPress={() => this.props.navigation.navigate("Cooking", { instructions: my_recipe.instructions, time: my_recipe.instructions_time})}>
+                    <Text style={styles.wrapperedtext}>Začať variť</Text>
+              </TouchableOpacity>              
               </View>
             }
           />
@@ -80,5 +87,18 @@ const styles = StyleSheet.create({
     basic: {
         flexDirection: 'row',
         alignSelf: 'flex-start'
-    }
+    },
+    wrapper:{
+      backgroundColor:'#0782F9',
+      marginTop:20,
+      borderRadius:100,
+      padding:20,
+      justifyContent: 'center',
+      flexDirection: 'row',
+    },
+
+    wrapperedtext:{
+      color:'white',
+      fontSize:25,
+    },
 })

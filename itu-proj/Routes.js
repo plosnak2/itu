@@ -10,6 +10,7 @@ import Favourite from './Components/Favorite.js';
 import Favourites from './Components/Favourites.js';
 import Shopping from './Components/Shopping.js';
 import MakeList from './Components/MakeList.js';
+import Cooking from './Components/Cooking.js'
 import { TransitionPresets, createStackNavigator } from '@react-navigation/stack';
 import { View } from 'react-native'
 import { Ionicons } from '@expo/vector-icons';
@@ -39,6 +40,8 @@ export default function App() {
                     <Stack.Screen name="Shopping" component={Shopping} options={{ headerShown: false }}/>
                     <Stack.Screen name="MakeList" component={MakeList} options={() => ({ title: "Vytvoriť zoznam"})}/>
                     <Stack.Screen name="NewRecipe" component={NewRecipe} options={{ headerShown: false }}/>
+                    <Stack.Screen name="Cooking" component={Cooking} options={() => ({ title: "Varíme"})}/>
+
                 </Stack.Navigator>
             </NavigationContainer>
         )
