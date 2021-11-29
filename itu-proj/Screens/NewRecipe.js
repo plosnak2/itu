@@ -199,6 +199,7 @@ export default class newRecipe extends React.Component {
             this.setState({
                 ingCount: ''
             });
+            
         }
     }
 
@@ -220,6 +221,10 @@ export default class newRecipe extends React.Component {
                 ingNameChange={this.ingNameChange}
                 ingCountChange={this.ingCountChange}
                 ingNameCountAdd={this.ingNameCountAdd}
+                ingName={this.state.ingName}
+                ingCount={this.state.ingCount}
+                currInstrName= {this.state.currInstrName}
+                currInstrTime={this.state.currInstrTime}
             />
         );
     }

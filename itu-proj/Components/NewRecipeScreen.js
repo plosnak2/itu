@@ -6,21 +6,19 @@ import { withFormik } from 'formik';
 import { uploadRecipe } from '../API/NewRecipeApi';
 import * as yup from 'yup';
 import { useNavigation } from '@react-navigation/core'
+import { ScreenWidth } from "react-native-elements/dist/helpers";
 
 
 
 const NewRecipeScreen = (props) => {
     const navigation = useNavigation()
     return (
-        <ImageBackground source={require('../assets/cooking.jpeg')} resizeMode="cover" style={styles.backImage}>
-            <View style={{ flex: 1, alignItems: 'center' }}>
-                <Text style={styles.text}>
-                    Recept:
-                </Text>
+        <ImageBackground source={require('../assets/profilebg.png')} resizeMode="cover" style={styles.backImage} imageStyle={{ opacity: 0.1 }}>
+            <ScrollView contentContainerstyle={{ flex: 1, alignItems: 'flex-start'}}>
                 <View style={styles.imageButton}>
                     <Button
                         onPress={() => {props.selectImage()}}
-                        title="Vyberte Fotku"
+                        title="Vyberte Fotografiu"
                         color="#333"
                     />
                 </View>
@@ -38,6 +36,7 @@ const NewRecipeScreen = (props) => {
                         onChangeText={text => { props.setSubName(text) }}
                         style={styles.input}
                         clearButtonMode="always"
+                        value={props.currInstrName}
                     />
                 </View>
                 <View style={styles.row}>
@@ -48,6 +47,7 @@ const NewRecipeScreen = (props) => {
                             keyboardType="numeric"
                             style={styles.input}
                             clearButtonMode="always"
+                            value={props.currInstrTime}
                         />
                     </View>
                     <View style={styles.IngButton}>
@@ -59,10 +59,23 @@ const NewRecipeScreen = (props) => {
                         </View>
                 </View>
                 
-                <View style={styles.keyText}>
+                {
+                    Object.entries(props.food.instrName).map(([key, value]) => {
+                        return(
+                            <View>
+                            <View style={styles.itemName}>
+                            <Text style={styles.ingredient}>{value}
+                            </Text>
+                            </View>
+                            </View>
+                        )
+                    })
+                }
+                
+                <View style={styles.keyText2}>
                     <TextInput
                         placeholder="Zadajte názov suroviny"
-                        value={props.values.ingName}
+                        value={props.ingName}
                         onChangeText={text => {props.ingNameChange(text)}}
                         style={styles.input}
                         clearButtonMode="always"
@@ -72,7 +85,7 @@ const NewRecipeScreen = (props) => {
                     <View style={styles.valueText}> 
                         <TextInput
                             placeholder="Zadajte množstvo suroviny"
-                            value={props.values.ingCount}
+                            value={props.ingCount}
                             onChangeText={text => {props.ingCountChange(text)}}
                             style={styles.input}
                             clearButtonMode="always"
@@ -86,7 +99,7 @@ const NewRecipeScreen = (props) => {
                             />
                         </View>
                 </View>
-                <Text style={{fontSize: 20}}>Ingrediencie</Text>
+                
                 <ScrollView>
                     {
                     Object.entries(props.ingredients).map(([key, value]) => {
@@ -105,7 +118,7 @@ const NewRecipeScreen = (props) => {
                     onChangeText={text => { props.setFieldValue('time', text) }}
                     clearButtonMode="always"
                 />
-            </View>
+            </ScrollView>
             <View style={styles.addButton}>
                     <Button
                         title="PRIDAŤ"
@@ -122,7 +135,8 @@ const NewRecipeScreen = (props) => {
 
 const styles = StyleSheet.create({
     backImage: {
-        flex: 1
+        flex: 1,
+        opacity: 10
     },
     text: {
         textAlign: 'center',
@@ -136,13 +150,13 @@ const styles = StyleSheet.create({
     addText: {
         color: 'black',
         fontSize: 25,
-        margin: 45,
+        margin: 25,
         padding: 5,
         borderWidth: 0.5,
         width: 270
     },
     addButton: {
-        left: 27, 
+        right: 27, 
         bottom: 40, 
         position: 'absolute',
         borderWidth: 1,
@@ -154,21 +168,23 @@ const styles = StyleSheet.create({
         backgroundColor: '#edbf46'
     },
     imageButton: {
-        left: Dimensions.get('window').width / 7,
+        alignItems: 'center',
         borderWidth: 0.5,
         borderRadius: 7,
         borderColor: '#333',
         overflow: 'hidden',
         textAlign: 'center',
         backgroundColor: '#9ec887',
-        marginTop: 10
+        marginTop: 10,
+        width: 170,
+        left: 25
     },
     row: {
         justifyContent: 'space-between',
         alignSelf: 'stretch',
         flexDirection: 'row',
         alignItems: 'center',
-        marginBottom: 32,
+        marginBottom: 10,
     },
     inputText: {
         borderColor: '#333',
@@ -185,7 +201,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 7,
         overflow: 'hidden',
-        textAlign: 'center',
+        //textAlign: 'center',
         backgroundColor: '#2196f3',
         width: 40,
         right: 20,
@@ -193,27 +209,39 @@ const styles = StyleSheet.create({
     tutorialText: {
         fontSize: 25,
         color: 'black',
-        marginBottom: 130,
-        right: 80,
+        marginBottom: 100,
+        //right: 80,
         borderWidth: 0.5,
         padding: 5,
         marginTop: 10,
-        width: 150
+        width: 150,
+        left: 25
     },
     keyText: {
         color: 'black',
         padding: 5,
-        marginTop: 15,
+        //marginTop: 5,
         borderWidth: 0.5,
-        width: 200,
-        marginBottom: 20,
+        width: 250,
+        //marginBottom: 20,
+        left: 25
+    },
+    keyText2: {
+        color: 'black',
+        padding: 5,
+        //marginTop: 5,
+        borderWidth: 0.5,
+        width: 250,
+        //marginBottom: 20,
+        left: 25,
+        marginTop: 35
     },
     valueText: {
         color: 'black',
         padding: 5,
         borderWidth: 0.5,
-        width: 200,
-        left: 87
+        width: 250,
+        left: 25
     },
     itemsview:{
         flex: 1,
@@ -228,7 +256,17 @@ const styles = StyleSheet.create({
     ingredient:{
         color:"black",
         fontSize:20
-    }
+    },
+    input: {
+        fontSize: 20
+    },
+    itemName: {
+        left: 25,
+        //padding: 5,
+        color: '#333',
+        width: ScreenWidth - 45,
+        fontSize: 20,
+    },
 })
 
 export default withFormik({
