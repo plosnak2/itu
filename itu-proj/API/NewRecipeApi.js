@@ -1,3 +1,7 @@
+/**
+ * Author: Slavomir Svorada (xsvora02)
+ * This serves for uploading recipes to firestore database
+ */
 import firebase from "firebase";
 
 export function uploadRecipe(food, uploadComplete) {
