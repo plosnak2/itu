@@ -130,7 +130,7 @@ class Home extends Component {
                                 />
                             </TouchableOpacity>
                         ))}
-                        
+                        <View style={{marginTop:150}}></View>
                     </ScrollView> 
                     <Navbar />
                     <Add />
