@@ -1,3 +1,7 @@
+/**
+ * Author: Jakub Zaukolec (xzauko00)
+ * This is graphic component that displays screen where user can find his shopping lists
+ */
 import React, { Component } from 'react'
 import {Image, Text, View, StyleSheet, StatusBar, Platform, Dimensions, TouchableOpacity } from 'react-native'
 import { Ionicons } from '@expo/vector-icons';

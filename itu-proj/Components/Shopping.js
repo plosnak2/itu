@@ -1,3 +1,7 @@
+/**
+ * Author: Jakub Zaukolec (xzauko00)
+ * This is logical component for displaying actual shopping lists from database and also allows to modify them
+ */
 import React, { Component } from 'react'
 import { ScrollView, Image, Text, View, TouchableOpacity, StyleSheet, StatusBar, Platform, ActivityIndicator, ImageBackground } from 'react-native'
 import ShoppingScreen from '../Screens/ShoppingScreen';
@@ -18,7 +22,7 @@ class Shopping extends Component {
         }
     };
     
-    
+    // on mounting this component i need to get myself the information about all shopping lists of current user
     componentDidMount() {
         this.unsubscribe = this.props.navigation.addListener('focus', async() => {
             const result = await AsyncStorage.getItem('email');
@@ -35,6 +39,7 @@ class Shopping extends Component {
         this.unsubscribe()
     }
 
+    // function that deletes whole shopping list from the database and changes state
     async deleteList(index) {
         const reducedArr = [...this.state.shopping];
         reducedArr.splice(index, 1);
@@ -46,6 +51,7 @@ class Shopping extends Component {
         });
     }
 
+    // function that deletes only one item (ingredient) from map in actual shopping list and changes state
     async deleteItem(index, key){
         const reducedArr = [...this.state.shopping];
         delete reducedArr[index].items[key];

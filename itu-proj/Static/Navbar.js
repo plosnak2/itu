@@ -1,3 +1,7 @@
+/**
+ * Author: Jakub Zaukolec (xzauko00)
+ * This is graphic static component used for navigate over different screens (floating navbar)
+ */
 import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity, Dimensions } from 'react-native'
 import { Ionicons } from '@expo/vector-icons';

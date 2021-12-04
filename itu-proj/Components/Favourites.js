@@ -1,3 +1,8 @@
+/**
+ * Author: Jakub Zaukolec (xzauko00)
+ * HomeScreen GUI component is taken from Jozef Čásar
+ * This component filters out only recipes, that logged user marked as his favourites
+ */
 import React, { Component } from 'react'
 import { ScrollView, Image, Text, View, TouchableOpacity, StyleSheet, StatusBar, Platform, ActivityIndicator, ImageBackground } from 'react-native'
 import HomeScreen from '../Screens/homepage';
@@ -17,7 +22,7 @@ class Favourites extends Component {
         }
     };
     
-    
+    // on mounting component i filter out current user´s favourite recipes from database and store them into state
     componentDidMount() {
         this.unsubscribe = this.props.navigation.addListener('focus', async() => {
             const result = await AsyncStorage.getItem('email');
@@ -43,6 +48,7 @@ class Favourites extends Component {
         this.unsubscribe()
     }
 
+    // function used for rating (made by Jozef Čásar)
     rate = (rate, rate_count) => {
         if(rate_count == 0){
             return "Nehodnotené"
@@ -51,6 +57,7 @@ class Favourites extends Component {
     }
 
     render() {
+        // loading screen is present when i dont have loaded my recipes from db yet
         if(this.state.loaded == false){
             return(
                 <View style={[styles.container2, styles.horizontal]}>

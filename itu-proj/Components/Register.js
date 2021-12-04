@@ -1,3 +1,7 @@
+/**
+ * Author: Jakub Zaukolec (xzauko00)
+ * This is logical component for Register (used for registering new users)
+ */
 import { useNavigation } from '@react-navigation/core'
 import React, { useEffect, useState } from 'react'
 import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View, Alert } from 'react-native'
@@ -15,6 +19,7 @@ const Register = () => {
 
   const navigation = useNavigation()
 
+  // function that handles register into the application (after successful register i store users mail into the asyncstorage and redirect onto the home screen)
   const handleSignUp = () => {
     if(password != repeatpass)
     {

@@ -1,3 +1,7 @@
+/**
+ * Authors: Jakub Zaukolec, Jozef Čásar, Slavomír Svorada
+ * This is functional component used for routing between screens
+ */
 import React from 'react'
 import Home from './Components/Home.js'
 import Recipe from './Components/Recipe.js';

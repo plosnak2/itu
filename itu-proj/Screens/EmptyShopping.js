@@ -1,3 +1,7 @@
+/**
+ * Author: Jakub Zaukolec (xzauko00)
+ * This is graphic component that displays screen, when user doesn´t have any shopping list created
+ */
 import React, { Component } from 'react'
 import {Image, Text, View, StyleSheet, StatusBar, Platform, Dimensions, ImageBackground, TouchableOpacity, ScrollView } from 'react-native'
 import Navbar from '../Static/Navbar'

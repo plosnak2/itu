@@ -1,3 +1,7 @@
+/**
+ * Author: Jakub Zaukolec (xzauko00)
+ * This is logical component for Login (used for logging in users)
+ */
 import { useNavigation } from '@react-navigation/core'
 import React, { useEffect, useState } from 'react'
 import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
@@ -13,6 +17,7 @@ const Login = () => {
 
   const navigation = useNavigation()
 
+  // i need the information whether the user is already logged in into app (so if user quit the application he doesnt have to log in again if he didnt log out)
   useEffect(() => {
     
     const unsubscribe = auth.onAuthStateChanged(async user => {
@@ -27,6 +32,7 @@ const Login = () => {
     return unsubscribe
   }, [])
 
+  // function that handles login into the application (functions are handled by firebase)
   const handleLogin = () => {
     auth
       .signInWithEmailAndPassword(email, password)

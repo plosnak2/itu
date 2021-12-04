@@ -1,3 +1,7 @@
+/**
+ * Author: Jakub Zaukolec
+ * This is graphic static component used in home screen (floating button in right bottom corner) used for adding new recipe
+ */
 import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity, Dimensions } from 'react-native'
 import { Ionicons } from '@expo/vector-icons';

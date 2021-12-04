@@ -1,3 +1,7 @@
+/**
+ * Author: Jakub Zaukolec (xzauko00)
+ * This is graphic component that displays screen used for making new shopping list (navigated from recipe screen)
+ */
 import React, { Component } from 'react'
 import {Image, Text, View, StyleSheet, StatusBar, Platform, ScrollView, ImageBackground, TextInput, Button, TouchableOpacity, Dimensions, KeyboardAvoidingView } from 'react-native'
 import Navbar from '../Static/Navbar';

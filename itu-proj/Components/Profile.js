@@ -1,3 +1,7 @@
+/**
+ * Author: Jakub Zaukolec (xzauko00)
+ * This is logical component for displaying user´s Profile
+ */
 import React, { useEffect, useState } from 'react'
 import { ScrollView, StyleSheet, Text, View, ActivityIndicator } from 'react-native'
 import Navbar from '../Static/Navbar';
@@ -19,7 +23,8 @@ const Profile = () => {
    const navigation = useNavigation()
    let unsubscribe = null
    
-
+   // in this component i need to know which user is logged in (this information i take from AsyncStorage where is stored mail of user)
+   // and i need to know how many favourite recipes he has
    useEffect(() => {
       unsubscribe = navigation.addListener('focus', async() => {
          const result = await AsyncStorage.getItem('email');
@@ -35,6 +40,7 @@ const Profile = () => {
       }
    }, [])
 
+   // function that handles signing out of application and redirection onto the login/register screen
    const handleSignOut= () =>{
       auth
         .signOut()
@@ -49,6 +55,7 @@ const Profile = () => {
         .catch(error => alert(error.message))
     }
 
+    // function that provides navigation onto the favourites screen
     const navigateToFavourites = () => {
       navigation.navigate('Favourites')
     }

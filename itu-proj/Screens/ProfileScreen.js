@@ -1,3 +1,7 @@
+/**
+ * Author: Jakub Zaukolec (xzauko00)
+ * This is graphic component that displays user´s profile screen
+ */
 import React, { Component } from 'react'
 import { ScrollView, StyleSheet, Text, View, Dimensions, Image, ImageBackground, TouchableOpacity } from 'react-native'
 import { RecipeRef } from '../firebaseConfig'
