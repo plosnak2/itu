@@ -1,3 +1,7 @@
+/**
+ * Author: Slavomir Svorada (xsvora02)
+ * This file is for onboarding screens
+ */
 import React, { useState, useRef } from 'react';
 import { View, StyleSheet, FlatList, Text, Dimensions } from 'react-native';
 import Indicators from '../Static/Indicators';

@@ -1,3 +1,7 @@
+/**
+ * Author: Slavomir Svorada (xsvora02)
+ * This file is for settings indicators for onboarding screen
+ */
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 

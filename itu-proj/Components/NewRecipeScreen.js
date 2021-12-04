@@ -1,3 +1,7 @@
+/**
+ * Author: Slavomir Svorada (xsvora02)
+ * This is graphic component that displays screen where user can add recipe to firestore database
+ */
 import React from 'react';
 import { StyleSheet, Text, View, ImageBackground, ScrollView, TextInput, Button, Alert} from 'react-native'
 import { Dimensions } from 'react-native';

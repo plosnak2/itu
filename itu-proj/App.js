@@ -1,3 +1,7 @@
+/**
+ * Author: Slavomir Svorada (xsvora02)
+ * This file is used for checking for first time loading 
+ */
 import React, { useEffect, useState } from 'react';
 import { AppRegistry, View } from 'react-native';
 import Routes from './Routes.js'

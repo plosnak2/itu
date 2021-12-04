@@ -1,3 +1,7 @@
+/**
+ * Author: Slavomir Svorada (xsvora02)
+ * This is logical component for adding recipe on firestore database
+ */
 import React from 'react'
 import { ActivityIndicator, Alert, Platform, LogBox } from 'react-native'
 import * as ImagePicker from 'expo-image-picker';
@@ -10,10 +14,6 @@ if (Platform.OS === 'android') {
     if (!ActivityIndicator.defaultProps) ActivityIndicator.defaultProps = {};
     ActivityIndicator.defaultProps.color = 'gray';
 }
-
-/*
-TODO image:, ingredient, instructions:, name:, time:
-*/
 
 export default class newRecipe extends React.Component {
 
@@ -48,6 +48,7 @@ export default class newRecipe extends React.Component {
         //this.submitSubNameTime = this.submitSubNameTime.bind(this);
     }
 
+    // function for selecting image from library 
     selectImage = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.All,
@@ -74,16 +75,19 @@ export default class newRecipe extends React.Component {
           }
           
     };
+    // function for setting for different platform
     getPlatformPath({ uri }) {
         return Platform.select({
             android: { "value": uri },
             ios: { "value": uri }
         })
     }
+    // function for cutting name path
     getFileName(name, path) {
         if (name != null) { return name; }
         return path.split("/").pop();
     }
+    // function for uploading image to firestore
     async uploadImageToStorage(path, name) {
         const blob = await new Promise((resolve, reject) => {
             const xhr = new XMLHttpRequest();
@@ -116,11 +120,13 @@ export default class newRecipe extends React.Component {
             currentSubIng: prevState.currentSubIng = text
         }));
     }
+    // function that sets state of name of tutorial name
     setCurName = (text) => {
         this.setState(prevState => ({
             currInstrName: prevState.currInstrName = text
         }));
     }
+    // function that sets state of count of tutorial time
     setCurTime = (number) => {
         this.setState(prevState => ({
             currInstrTime: prevState.currInstrTime = number
@@ -142,6 +148,7 @@ export default class newRecipe extends React.Component {
         }
     }
     
+    // function for checking input text and add data to array for future uploading
     submitSubNameTime = () => {
         let ingredient = this.state.currInstrName;
         let ingredient2 = this.state.currInstrTime;
@@ -173,14 +180,17 @@ export default class newRecipe extends React.Component {
             }
         }
 
+    // function that sets state of name of ingredient name
     ingNameChange = (text) => {
         this.setState({ingName: text})
     }
 
+    // function that sets state of name of ingredient count
     ingCountChange = (text) => {
         this.setState({ingCount: text})
     }
 
+    // function for checking input text and adding data to map
     ingNameCountAdd = () => {
         if(this.state.ingName == '' || this.state.ingCount == '') {
             Alert.alert('Upozornenie', 'Pre pridanie suroviny je potrebné zadať názov aj množstvo.', [

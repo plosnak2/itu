@@ -1,3 +1,7 @@
+/**
+ * Author: Slavomir Svorada (xsvora02)
+ * This file is for slide specification for onboarding screen
+ */
 import React from 'react';
 import { View, StyleSheet, Dimensions, Text, Image, Number } from 'react-native';
 
