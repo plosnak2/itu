@@ -292,7 +292,7 @@ export default withFormik({
       values.instructions = props.food.instrName;
       values.instructions_time = props.food.instrTime;
       console.log('VALUES:' , values);
-      uploadRecipe(values)
+      uploadRecipe(values, values.ingredient)
       Alert.alert('Upozornenie', 'Recept bol pridaný.', [
         {text: 'Rozumiem', onPress: () => console.log('send alert closed')}
     ])

@@ -129,7 +129,7 @@ export default class newRecipe extends React.Component {
     // function that sets state of count of tutorial time
     setCurTime = (number) => {
         this.setState(prevState => ({
-            currInstrTime: prevState.currInstrTime = number
+            currInstrTime: prevState.currInstrTime = number * 60
         }));
     }
 
@@ -153,7 +153,7 @@ export default class newRecipe extends React.Component {
         let ingredient = this.state.currInstrName;
         let ingredient2 = this.state.currInstrTime;
 
-            if ((ingredient && ingredient.length > 2) && ((ingredient2 && ingredient2.length < 4) && (ingredient2.length > 0))) {
+            if ((ingredient && ingredient.length > 2) && ((ingredient2 && ingredient2 < 14440))) {
                 this.setState(prevState => ({
                     food: { ...prevState.food,
                         instrName: [...prevState.food.instrName, ingredient] },
