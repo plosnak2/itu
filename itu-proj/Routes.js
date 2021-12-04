@@ -36,7 +36,7 @@ export default function App() {
                         component={Home}
                         options={{header: () => null}}
                     />
-                    <Stack.Screen name="Recipe" component={Recipe} options={({ navigation, route }) => ({ title: route.params.name , headerRight: () => <View style={{flexDirection: 'row', paddingRight: 20}}><Favourite id={route.params.id} /><Ionicons name='cart-outline' size={40} style={{marginLeft: 10}}
+                    <Stack.Screen name="Recipe" component={Recipe} options={({ navigation, route }) => ({ title: 'Recept' , headerRight: () => <View style={{flexDirection: 'row', paddingRight: 20}}><Favourite id={route.params.id} /><Ionicons name='cart-outline' size={40} style={{marginLeft: 10}}
                         onPress={() => navigation.navigate("MakeList", { data: route.params.ingredient, filter: route.params.filter})
                     }/></View>})}/>
                     <Stack.Screen name="Profile" component={Profile} options={{ headerShown: false }}/>

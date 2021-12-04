@@ -1,3 +1,7 @@
+/**
+ * Author: Jozef Čásar (xcasar)
+ * This is logical component that retrieve recipe and user data connected with actual recipe
+ */
 import React, { Component, useEffect } from 'react'
 import { ScrollView, StyleSheet } from 'react-native'
 import Recipe from '../Screens/RecipeScreen';
@@ -18,6 +22,7 @@ class Recipe_screen extends Component {
       this.navigateToHome = this.navigateToHome.bind(this)
    }
 
+   //function for taking user informations (rating)
    async getUser() {
          const user = await AsyncStorage.getItem('email');
          this.setState({user: user})
@@ -30,6 +35,7 @@ class Recipe_screen extends Component {
          });
    }
 
+   // on mounting component retrieve recipe data from database and store them into state
    componentDidMount() {
       this.unsubscribe = this.props.navigation.addListener('focus', async() => {
          RecipeRef.doc(this.state.id).get().then((documentSnapshot) => {

@@ -1,3 +1,7 @@
+/**
+ * Author: Jozef Čásar (xcasar)
+ * This is logical component that retrieve all recipes data
+ */
 import React, { Component } from 'react'
 import { ScrollView, Text, View, TouchableOpacity, StyleSheet, StatusBar, Platform, ActivityIndicator, ImageBackground } from 'react-native'
 import HomeScreen from '../Screens/homepage';
@@ -18,6 +22,7 @@ class Home extends Component {
         loading: true,
     }
 
+    //getting all recipes from database
     async get_data(filter) {
         RecipeRef.onSnapshot((QuerySnapshot) => {
             let recipes = [];
@@ -56,14 +61,9 @@ class Home extends Component {
     componentDidMount() {
         this.get_data('');
         this.setState({ loading: false })
-        /*let imageRef = firebase.storage().ref('/AjeuQGuaecKrhM4pUgb9.png');
-        imageRef
-        .getDownloadURL()
-        .then((url) => {
-            //from url you can fetched the uploaded image easily
-            console.log(url);
-        })*/
     }
+
+    //for displaying rate of recipe
     rate = (rate, rate_count) => {
         if (rate_count == 0) {
             return "Nehodnotené"
@@ -71,6 +71,7 @@ class Home extends Component {
         return (rate / rate_count)
     }
 
+    //change displaying recipes when user set filter   
     filtered_ingredients = (filter) => {
         this.get_data(filter);
         this.render();

@@ -1,3 +1,7 @@
+/**
+ * Author: Jozef Čásar (xcasar)
+ * This is logical and graphic component that displays the instruction based on timer to user
+ */
 import React, { Component } from 'react'
 import { Image, Text, ScrollView, View, StyleSheet, Dimensions, FlatList, KeyboardAvoidingView, TouchableOpacity, Vibration, ImageBackground, Button } from 'react-native'
 
@@ -18,6 +22,7 @@ class Timer extends Component {
         };
     }
 
+    //changing timer
     tick = () => {
         if (this.state.seconds > 0) {
             this.setState({flag: true})
@@ -33,13 +38,11 @@ class Timer extends Component {
             }
             else if(this.state.flag){
                 Vibration.vibrate()
-                //this.setState({ act_index: this.state.act_index + 1 })
-                //this.setState({ seconds: this.state.time[this.state.act_index] })
-                //this.setState({ act_instruction: this.state.instructions[this.state.act_index] })
             }
         }
     }
 
+    //set timer and data to state
     componentDidMount() {
         this.setState({ act_instruction: this.state.instructions[0] })
         this.setState({seconds: this.state.time[0]})
@@ -52,6 +55,7 @@ class Timer extends Component {
         clearInterval(this.state.timer);
     }
 
+    //change time to user friendly variant
     formatTime(secs) {
         let hours = Math.floor(secs / 3600);
         let minutes = Math.floor(secs / 60) % 60;
@@ -62,6 +66,7 @@ class Timer extends Component {
             .join(':');
     }
 
+    //change actual instruction to next
     nextInstruction() {
         this.setState({ seconds: this.state.time[this.state.act_index+1] })
         this.setState({ act_instruction: this.state.instructions[this.state.act_index+1] })
@@ -69,6 +74,7 @@ class Timer extends Component {
         Vibration.cancel()
     }
 
+    //display actual instruction, timer and gif
     render() {
         return (
             <ScrollView

@@ -1,3 +1,7 @@
+/**
+ * Author: Jozef Čásar (xcasar)
+ * This is logical and graphic component that displays if this is users favorite recipe
+ */
 import React, { Component } from 'react'
 import { TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
@@ -14,6 +18,7 @@ class Favourite extends Component {
         }
     }
 
+    //check if user has this recipe in favorite recipes
     async getUser() {
         const user = await AsyncStorage.getItem('email');
         this.setState({user: user})
@@ -27,6 +32,7 @@ class Favourite extends Component {
         this.getUser();
     }
 
+    //when user press the heart, database is updated
     make_favourite = () => {
         if(this.state.flag == false){
             UsersRef.doc(this.state.user).update({favourites: firebase.firestore.FieldValue.arrayUnion(this.props.id)})
@@ -36,6 +42,7 @@ class Favourite extends Component {
         }
         this.setState({flag: !this.state.flag})
     }
+    //displaying fill or out-line heart, changed when user press heart
     render() {
         return (
             <TouchableOpacity onPress={() => this.make_favourite()}>

@@ -1,3 +1,7 @@
+/**
+ * Author: Jozef Čásar (xcasar)
+ * This is graphic component that displays actual recipe and user rating
+ */
 import { NavigationContainer } from '@react-navigation/native';
 import React, { Component } from 'react'
 import { Image, Text, View, StyleSheet, Dimensions, FlatList, KeyboardAvoidingView,TouchableOpacity } from 'react-native'
@@ -32,6 +36,9 @@ class RecipeScreen extends Component {
                   <View style={{ paddingTop: 10, marginLeft: 10 }}>
                     <RecipeRating actualRating={this.props.rating} user={this.props.user} id={this.props.id} rate_count={my_recipe.rate_count} rate={my_recipe.rate}/>
                   </View>
+                </View>
+                <View style={styles.basic}>
+                  <Text style={styles.text_title}>{my_recipe.name}</Text>
                 </View>
                 <View style={styles.basic}>
                   <Text style={styles.text_title}>Čas prípravy:</Text>

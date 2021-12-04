@@ -1,3 +1,7 @@
+/**
+ * Author: Jozef Čásar (xcasar)
+ * This is graphic component that displays user all recipes from database
+ */
 import React, { Component } from 'react'
 import {Image, Text, View, StyleSheet, StatusBar, Platform, Dimensions } from 'react-native'
 import { Ionicons } from '@expo/vector-icons';
