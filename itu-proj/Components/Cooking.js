@@ -94,6 +94,11 @@ class Timer extends Component {
                             <Text style={styles.wrapperedtext}>Ďalej</Text>
                         </TouchableOpacity>
                     }
+                    {
+                        this.state.act_index == this.state.time.length - 1 && <TouchableOpacity style={styles.wrapper} onPress={() => this.props.navigation.navigate('Home')}>
+                            <Text style={styles.wrapperedtext}>Koniec</Text>
+                        </TouchableOpacity>
+                    }
                     
                 </View>
                 <View style={{ marginHorizontal: 20 }}>
