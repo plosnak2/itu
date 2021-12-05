@@ -174,7 +174,7 @@ export default class newRecipe extends React.Component {
                     {text: 'Rozumiem', onPress: () => console.log('ingredient alert closed')}
                 ]);
             } else {
-                Alert.alert('Upozornenie', 'Dĺžka času prípravy musí byť najviac trojciferná hodnota.', [
+                Alert.alert('Upozornenie', 'Dĺžka času prípravy musí byť zadaná (najviac 240 minút).', [
                     {text: 'Rozumiem', onPress: () => console.log('ingredient alert closed')}
                 ]);
             }
