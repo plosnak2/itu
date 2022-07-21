@@ -1,4 +1,4 @@
-# Application for cooking - ITU
+# Mobile application for cooking - ITU
 Authors: Jakub Zaukolec, Slavomír Svorada, Jozef Čásar
 
 # Screenshots
